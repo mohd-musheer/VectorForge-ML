@@ -1,7 +1,7 @@
 library(Rcpp)
 Sys.setenv(
   PKG_CXXFLAGS="-O3 -march=native -ffast-math",
-  PKG_LIBS="-lRblas"
+  PKG_LIBS="-lRblas -lRlapack"
 )
 
 
@@ -51,7 +51,11 @@ X <- as.matrix(df)
 # =========================
 # REMOVE CONSTANT COLUMNS
 # =========================
-X <- X[, apply(X,2,var)!=0]
+if (exists("cpp_drop_constant_cols", mode="function")) {
+  X <- cpp_drop_constant_cols(X)$X
+} else {
+  X <- X[, apply(X,2,var)!=0]
+}
 
 
 cat("\nSamples:", nrow(X))

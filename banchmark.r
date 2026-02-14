@@ -2,7 +2,7 @@ library(Rcpp)
 
 Sys.setenv(
   PKG_CXXFLAGS="-O3 -march=native -funroll-loops -ffast-math -flto",
-  PKG_LIBS="-lRblas"
+  PKG_LIBS="-lRblas -lRlapack"
 )
 
 
@@ -47,7 +47,11 @@ cat_encoded <- encoder$fit_transform(cat_df)
 X <- cbind(as.matrix(num_df), cat_encoded)
 
 # remove constant columns
-X <- X[, apply(X,2,var)!=0]
+if (exists("cpp_drop_constant_cols", mode="function")) {
+  X <- cpp_drop_constant_cols(X)$X
+} else {
+  X <- X[, apply(X,2,var)!=0]
+}
 
 # split
 data <- train_test_split(X,y, seed=42)

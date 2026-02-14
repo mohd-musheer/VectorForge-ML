@@ -1,7 +1,9 @@
 #include <Rcpp.h>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 #include <R_ext/BLAS.h>
+#include <R_ext/Lapack.h>
 
 using namespace Rcpp;
 using namespace std;
@@ -82,7 +84,18 @@ static vector<double> fitCoefNoIntercept(const NumericMatrix& X, const NumericVe
     for (int j = 0; j < p; ++j) {
         XtX[j + j * p] += 1e-8;
     }
-    return solveCholesky(std::move(XtX), std::move(Xty), p);
+
+    const char* uplo = "L";
+    int nsys = p;
+    int nrhs = 1;
+    int lda = p;
+    int ldb = p;
+    int info = 0;
+    F77_CALL(dposv)(uplo, &nsys, &nrhs, XtX.data(), &lda, Xty.data(), &ldb, &info FCONE);
+    if (info != 0) {
+        return solveCholesky(std::move(XtX), std::move(Xty), p);
+    }
+    return Xty;
 }
 
 // [[Rcpp::export]]
@@ -153,4 +166,104 @@ NumericVector lr_predict(SEXP ptr, NumericMatrix X) {
 NumericVector fastLm(NumericMatrix X, NumericVector y) {
     const vector<double> coef = fitCoefNoIntercept(X, y);
     return NumericVector(coef.begin(), coef.end());
+}
+
+// [[Rcpp::export]]
+List cpp_scale_fit_transform(NumericMatrix X, double eps = 1e-12) {
+    const int n = X.nrow();
+    const int p = X.ncol();
+    NumericVector means(p);
+    NumericVector sds(p);
+    NumericMatrix Z(n, p);
+
+    for (int j = 0; j < p; ++j) {
+        const double* col = X.begin() + static_cast<size_t>(j) * n;
+        double sum = 0.0;
+        double sumsq = 0.0;
+        for (int i = 0; i < n; ++i) {
+            const double v = col[i];
+            sum += v;
+            sumsq += v * v;
+        }
+        const double mean = (n > 0) ? (sum / n) : 0.0;
+        double var = 0.0;
+        if (n > 1) {
+            var = (sumsq - n * mean * mean) / (n - 1.0);
+            if (var < 0.0) var = 0.0;
+        }
+        double sd = std::sqrt(var);
+        if (sd <= eps) sd = 1.0;
+        means[j] = mean;
+        sds[j] = sd;
+        for (int i = 0; i < n; ++i) {
+            Z(i, j) = (col[i] - mean) / sd;
+        }
+    }
+
+    return List::create(
+        _["X"] = Z,
+        _["mean"] = means,
+        _["sd"] = sds
+    );
+}
+
+// [[Rcpp::export]]
+NumericMatrix cpp_scale_transform(NumericMatrix X, NumericVector means, NumericVector sds, double eps = 1e-12) {
+    const int n = X.nrow();
+    const int p = X.ncol();
+    if (means.size() != p || sds.size() != p) {
+        stop("mean/sd length must match number of columns");
+    }
+    NumericMatrix Z(n, p);
+    for (int j = 0; j < p; ++j) {
+        const double m = means[j];
+        double sd = sds[j];
+        if (sd <= eps) sd = 1.0;
+        const double* col = X.begin() + static_cast<size_t>(j) * n;
+        for (int i = 0; i < n; ++i) {
+            Z(i, j) = (col[i] - m) / sd;
+        }
+    }
+    return Z;
+}
+
+// [[Rcpp::export]]
+List cpp_drop_constant_cols(NumericMatrix X, double eps = 1e-12) {
+    const int n = X.nrow();
+    const int p = X.ncol();
+    vector<int> keep;
+    keep.reserve(p);
+
+    for (int j = 0; j < p; ++j) {
+        const double* col = X.begin() + static_cast<size_t>(j) * n;
+        double sum = 0.0;
+        double sumsq = 0.0;
+        for (int i = 0; i < n; ++i) {
+            const double v = col[i];
+            sum += v;
+            sumsq += v * v;
+        }
+        double var = 0.0;
+        if (n > 1) {
+            const double mean = sum / n;
+            var = (sumsq - n * mean * mean) / (n - 1.0);
+            if (var < 0.0) var = 0.0;
+        }
+        if (var > eps) {
+            keep.push_back(j);
+        }
+    }
+
+    const int k = static_cast<int>(keep.size());
+    NumericMatrix out(n, k);
+    for (int jj = 0; jj < k; ++jj) {
+        const int src = keep[jj];
+        const double* src_col = X.begin() + static_cast<size_t>(src) * n;
+        double* dst_col = out.begin() + static_cast<size_t>(jj) * n;
+        std::copy(src_col, src_col + n, dst_col);
+    }
+
+    IntegerVector keep1(k);
+    for (int i = 0; i < k; ++i) keep1[i] = keep[i] + 1;
+    return List::create(_["X"] = out, _["keep"] = keep1);
 }
