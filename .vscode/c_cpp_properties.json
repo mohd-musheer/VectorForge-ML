@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "C:/rtools44/x86_64-w64-mingw32.static.posix/bin/gcc.exe",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "windows-gcc-x64",
+      "compilerArgs": [
+        ""
+      ]
+    }
+  ],
+  "version": 4
+}
