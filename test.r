@@ -1,7 +1,22 @@
 library(Rcpp)
 Sys.setenv(
-  PKG_CXXFLAGS="-O3 -march=native -ffast-math",
-  PKG_LIBS="-lRblas -lRlapack"
+  OPENBLAS_NUM_THREADS="8",
+  OMP_NUM_THREADS="8",
+  OMP_PROC_BIND="TRUE",
+  OMP_PLACES="cores"
+)
+
+fast_flags <- paste(
+  "-O3 -march=native -ffast-math -fopenmp",
+  "-fomit-frame-pointer -fstrict-aliasing",
+  "-funroll-loops",
+  "-falign-functions=32 -falign-loops=32 -falign-jumps=32"
+)
+no_omp_flags <- gsub("-fopenmp", "", fast_flags, fixed=TRUE)
+
+Sys.setenv(
+  PKG_CXXFLAGS=fast_flags,
+  PKG_LIBS="-LC:/openblas/lib -lopenblas"
 )
 
 
@@ -9,7 +24,35 @@ Sys.setenv(
 # =========================
 # COMPILE MODEL
 # =========================
-sourceCpp("src/LinearRegression.cpp")
+compiled <- tryCatch({
+  sourceCpp("src/LinearRegression.cpp")
+  TRUE
+}, error=function(e) {
+  message("OpenBLAS link failed: ", conditionMessage(e))
+  FALSE
+})
+
+if (!compiled) {
+  Sys.setenv(
+    PKG_CXXFLAGS=fast_flags,
+    PKG_LIBS="-LC:/openblas/lib -lopenblas -lgomp"
+  )
+  compiled <- tryCatch({
+    sourceCpp("src/LinearRegression.cpp")
+    TRUE
+  }, error=function(e) {
+    message("OpenBLAS+gomp link failed: ", conditionMessage(e))
+    FALSE
+  })
+}
+
+if (!compiled) {
+  Sys.setenv(
+    PKG_CXXFLAGS=no_omp_flags,
+    PKG_LIBS="-lRblas -lRlapack"
+  )
+  sourceCpp("src/LinearRegression.cpp")
+}
 
 # =========================
 # LOAD FRAMEWORK FILES
