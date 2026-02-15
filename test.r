@@ -8,7 +8,7 @@ source("R/scalers.R")
 cat("Loading dataset...\n")
 
 # LOAD DATASET
-df <- read.csv("dataset/students.csv")
+df <- read.csv("inst/dataset/students.csv")
 print(head(df))
 
 # TARGET

@@ -3,10 +3,12 @@ source("R/LinearRegression.R")
 source("R/split.R")
 source("R/scalers.R")
 source("R/encoders.R")
+ls("package:VectorForgeML")
 
 cat("Loading dataset...\n")
 
-df <- read.csv("dataset/cars.csv", stringsAsFactors = FALSE)
+
+df <- read.csv("inst/dataset/cars.csv", stringsAsFactors = FALSE)
 df <- df[rep(1:nrow(df), 10), ]
 cat("Rows:", nrow(df), "\n")
 

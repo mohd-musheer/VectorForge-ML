@@ -14,3 +14,4 @@ Imports:
 LinkingTo:
     Rcpp
 SystemRequirements: OpenMP (optional)
+RoxygenNote: 7.3.3
