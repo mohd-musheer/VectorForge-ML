@@ -121,7 +121,7 @@ end <- Sys.time()
 cat("\nYour Framework Time:", as.numeric(end - start), "seconds\n")
 ```
 
-
+Kaggle Notebook : https://www.kaggle.com/code/almusheer/linear-regression-vectorforgeml
 
 (Advanced build system using CMake will be added in future versions.)
 
