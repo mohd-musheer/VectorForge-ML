@@ -10,67 +10,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// square_vec
-NumericVector square_vec(NumericVector x);
-RcppExport SEXP _VectorForgeML_square_vec(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(square_vec(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-
-// sum2
-int sum2(int x, int y);
-RcppExport SEXP _VectorForgeML_sum2(SEXP xSEXP, SEXP ySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type x(xSEXP);
-    Rcpp::traits::input_parameter< int >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(sum2(x, y));
-    return rcpp_result_gen;
-END_RCPP
-}
-
-// cpp_sum_squares
-double cpp_sum_squares(int n);
-RcppExport SEXP _VectorForgeML_cpp_sum_squares(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(cpp_sum_squares(n));
-    return rcpp_result_gen;
-END_RCPP
-}
-
-// dot_product
-double dot_product(NumericVector a, NumericVector b);
-RcppExport SEXP _VectorForgeML_dot_product(SEXP aSEXP, SEXP bSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type a(aSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
-    rcpp_result_gen = Rcpp::wrap(dot_product(a, b));
-    return rcpp_result_gen;
-END_RCPP
-}
-
-// cpp_set_blas_threads
-void cpp_set_blas_threads();
-RcppExport SEXP _VectorForgeML_cpp_set_blas_threads() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    cpp_set_blas_threads();
-    return R_NilValue;
-END_RCPP
-}
-
 // lr_create
 SEXP lr_create();
 RcppExport SEXP _VectorForgeML_lr_create() {
@@ -81,7 +20,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
 // lr_fit
 void lr_fit(SEXP ptr, NumericMatrix X, NumericVector y);
 RcppExport SEXP _VectorForgeML_lr_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP ySEXP) {
@@ -94,7 +32,6 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-
 // lr_predict
 NumericVector lr_predict(SEXP ptr, NumericMatrix X);
 RcppExport SEXP _VectorForgeML_lr_predict(SEXP ptrSEXP, SEXP XSEXP) {
@@ -107,7 +44,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
 // fastLm
 NumericVector fastLm(NumericMatrix X, NumericVector y);
 RcppExport SEXP _VectorForgeML_fastLm(SEXP XSEXP, SEXP ySEXP) {
@@ -120,7 +56,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
 // cpp_scale_fit_transform
 List cpp_scale_fit_transform(NumericMatrix X, double eps);
 RcppExport SEXP _VectorForgeML_cpp_scale_fit_transform(SEXP XSEXP, SEXP epsSEXP) {
@@ -133,7 +68,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
 // cpp_scale_transform
 NumericMatrix cpp_scale_transform(NumericMatrix X, NumericVector means, NumericVector sds, double eps);
 RcppExport SEXP _VectorForgeML_cpp_scale_transform(SEXP XSEXP, SEXP meansSEXP, SEXP sdsSEXP, SEXP epsSEXP) {
@@ -148,7 +82,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
 // cpp_drop_constant_cols
 List cpp_drop_constant_cols(NumericMatrix X, double eps);
 RcppExport SEXP _VectorForgeML_cpp_drop_constant_cols(SEXP XSEXP, SEXP epsSEXP) {
@@ -161,13 +94,63 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// square_vec
+NumericVector square_vec(NumericVector x);
+RcppExport SEXP _VectorForgeML_square_vec(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(square_vec(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sum2
+int sum2(int x, int y);
+RcppExport SEXP _VectorForgeML_sum2(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(sum2(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_sum_squares
+double cpp_sum_squares(int n);
+RcppExport SEXP _VectorForgeML_cpp_sum_squares(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_sum_squares(n));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dot_product
+double dot_product(NumericVector a, NumericVector b);
+RcppExport SEXP _VectorForgeML_dot_product(SEXP aSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
+    rcpp_result_gen = Rcpp::wrap(dot_product(a, b));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_set_blas_threads
+void cpp_set_blas_threads();
+RcppExport SEXP _VectorForgeML_cpp_set_blas_threads() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    cpp_set_blas_threads();
+    return R_NilValue;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_VectorForgeML_square_vec", (DL_FUNC) &_VectorForgeML_square_vec, 1},
-    {"_VectorForgeML_sum2", (DL_FUNC) &_VectorForgeML_sum2, 2},
-    {"_VectorForgeML_cpp_sum_squares", (DL_FUNC) &_VectorForgeML_cpp_sum_squares, 1},
-    {"_VectorForgeML_dot_product", (DL_FUNC) &_VectorForgeML_dot_product, 2},
-    {"_VectorForgeML_cpp_set_blas_threads", (DL_FUNC) &_VectorForgeML_cpp_set_blas_threads, 0},
     {"_VectorForgeML_lr_create", (DL_FUNC) &_VectorForgeML_lr_create, 0},
     {"_VectorForgeML_lr_fit", (DL_FUNC) &_VectorForgeML_lr_fit, 3},
     {"_VectorForgeML_lr_predict", (DL_FUNC) &_VectorForgeML_lr_predict, 2},
@@ -175,6 +158,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_VectorForgeML_cpp_scale_fit_transform", (DL_FUNC) &_VectorForgeML_cpp_scale_fit_transform, 2},
     {"_VectorForgeML_cpp_scale_transform", (DL_FUNC) &_VectorForgeML_cpp_scale_transform, 4},
     {"_VectorForgeML_cpp_drop_constant_cols", (DL_FUNC) &_VectorForgeML_cpp_drop_constant_cols, 2},
+    {"_VectorForgeML_square_vec", (DL_FUNC) &_VectorForgeML_square_vec, 1},
+    {"_VectorForgeML_sum2", (DL_FUNC) &_VectorForgeML_sum2, 2},
+    {"_VectorForgeML_cpp_sum_squares", (DL_FUNC) &_VectorForgeML_cpp_sum_squares, 1},
+    {"_VectorForgeML_dot_product", (DL_FUNC) &_VectorForgeML_dot_product, 2},
+    {"_VectorForgeML_cpp_set_blas_threads", (DL_FUNC) &_VectorForgeML_cpp_set_blas_threads, 0},
     {NULL, NULL, 0}
 };
 
