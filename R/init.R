@@ -1,3 +1,1 @@
-.onLoad <- function(libname, pkgname){
-  library.dynam("VectorForgeML", pkgname, libname)
-}
+# Deprecated: dynamic loading is handled by `useDynLib()`.

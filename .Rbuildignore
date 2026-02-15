@@ -1,0 +1,12 @@
+^\.git$
+^\.gitignore$
+^\.vscode$
+^\.Rhistory$
+^\.RData$
+^tempCodeRunnerFile\.r$
+^benchmark\.py$
+^banchmark\.r$
+^test\.r$
+^dataset$
+^\.\.?Rcheck$
+^src/.*\.(o|obj|dll|so|dylib|a|lib)$

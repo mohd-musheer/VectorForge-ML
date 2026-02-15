@@ -17,3 +17,34 @@ dot_product <- function(a, b) {
     .Call(`_VectorForgeML_dot_product`, a, b)
 }
 
+cpp_set_blas_threads <- function() {
+    invisible(.Call(`_VectorForgeML_cpp_set_blas_threads`))
+}
+
+lr_create <- function() {
+    .Call(`_VectorForgeML_lr_create`)
+}
+
+lr_fit <- function(ptr, X, y) {
+    invisible(.Call(`_VectorForgeML_lr_fit`, ptr, X, y))
+}
+
+lr_predict <- function(ptr, X) {
+    .Call(`_VectorForgeML_lr_predict`, ptr, X)
+}
+
+fastLm <- function(X, y) {
+    .Call(`_VectorForgeML_fastLm`, X, y)
+}
+
+cpp_scale_fit_transform <- function(X, eps = 1e-12) {
+    .Call(`_VectorForgeML_cpp_scale_fit_transform`, X, eps)
+}
+
+cpp_scale_transform <- function(X, means, sds, eps = 1e-12) {
+    .Call(`_VectorForgeML_cpp_scale_transform`, X, means, sds, eps)
+}
+
+cpp_drop_constant_cols <- function(X, eps = 1e-12) {
+    .Call(`_VectorForgeML_cpp_drop_constant_cols`, X, eps)
+}

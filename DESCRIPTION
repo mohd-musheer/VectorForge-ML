@@ -5,7 +5,12 @@ Version: 0.1.0
 Author: Musheer
 Maintainer: Musheer <musheerayan@gmail.com>
 Description: Fast ML primitives written in C++.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: Rcpp
-LinkingTo: Rcpp
+Depends: R (>= 3.5.0)
+Imports:
+    methods,
+    Rcpp
+LinkingTo:
+    Rcpp
+SystemRequirements: OpenMP (optional)

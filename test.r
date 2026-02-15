@@ -1,62 +1,5 @@
-library(Rcpp)
-Sys.setenv(
-  OPENBLAS_NUM_THREADS="8",
-  OMP_NUM_THREADS="8",
-  OMP_PROC_BIND="TRUE",
-  OMP_PLACES="cores"
-)
+library(VectorForgeML)
 
-fast_flags <- paste(
-  "-O3 -march=native -ffast-math -fopenmp",
-  "-fomit-frame-pointer -fstrict-aliasing",
-  "-funroll-loops",
-  "-falign-functions=32 -falign-loops=32 -falign-jumps=32"
-)
-no_omp_flags <- gsub("-fopenmp", "", fast_flags, fixed=TRUE)
-
-Sys.setenv(
-  PKG_CXXFLAGS=fast_flags,
-  PKG_LIBS="-LC:/openblas/lib -lopenblas"
-)
-
-
-
-# =========================
-# COMPILE MODEL
-# =========================
-compiled <- tryCatch({
-  sourceCpp("src/LinearRegression.cpp")
-  TRUE
-}, error=function(e) {
-  message("OpenBLAS link failed: ", conditionMessage(e))
-  FALSE
-})
-
-if (!compiled) {
-  Sys.setenv(
-    PKG_CXXFLAGS=fast_flags,
-    PKG_LIBS="-LC:/openblas/lib -lopenblas -lgomp"
-  )
-  compiled <- tryCatch({
-    sourceCpp("src/LinearRegression.cpp")
-    TRUE
-  }, error=function(e) {
-    message("OpenBLAS+gomp link failed: ", conditionMessage(e))
-    FALSE
-  })
-}
-
-if (!compiled) {
-  Sys.setenv(
-    PKG_CXXFLAGS=no_omp_flags,
-    PKG_LIBS="-lRblas -lRlapack"
-  )
-  sourceCpp("src/LinearRegression.cpp")
-}
-
-# =========================
-# LOAD FRAMEWORK FILES
-# =========================
 source("R/LinearRegression.R")
 source("R/metrics.R")
 source("R/split.R")
@@ -64,91 +7,48 @@ source("R/scalers.R")
 
 cat("Loading dataset...\n")
 
-# =========================
 # LOAD DATASET
-# =========================
 df <- read.csv("dataset/students.csv")
-
 print(head(df))
 
-
-# =========================
 # TARGET
-# =========================
 y <- df$End_Sem_Marks
 
-
-# =========================
 # REMOVE TARGET + USELESS COLS
-# =========================
 df$End_Sem_Marks <- NULL
-df$Student_ID <- NULL   # ID columns should never be features
+df$Student_ID <- NULL
 
-
-# =========================
 # FEATURES MATRIX
-# =========================
 X <- as.matrix(df)
 
-
-# =========================
 # REMOVE CONSTANT COLUMNS
-# =========================
-if (exists("cpp_drop_constant_cols", mode="function")) {
+if (exists("cpp_drop_constant_cols", mode = "function")) {
   X <- cpp_drop_constant_cols(X)$X
 } else {
-  X <- X[, apply(X,2,var)!=0]
+  X <- X[, apply(X, 2, var) != 0]
 }
-
 
 cat("\nSamples:", nrow(X))
 cat("\nFeatures:", ncol(X), "\n")
 
-
-# =========================
 # TRAIN TEST SPLIT
-# =========================
-data <- train_test_split(X,y, seed=42)
+data <- train_test_split(X, y, seed = 42)
 
-
-# =========================
 # SCALING
-# =========================
 scaler <- StandardScaler$new()
-
 X_train <- scaler$fit_transform(data$X_train)
-X_test  <- scaler$transform(data$X_test)
+X_test <- scaler$transform(data$X_test)
 
-
-# =========================
 # TRAIN MODEL
-# =========================
 cat("\nTraining model...\n")
-
 model <- LinearRegression$new()
 model$fit(X_train, data$y_train)
 
-
-# =========================
 # PREDICT
-# =========================
 pred <- model$predict(X_test)
 
-
-# =========================
 # METRICS
-# =========================
 cat("\nResults\n")
 cat("RMSE:", rmse(data$y_test, pred), "\n")
 cat("MSE:", mse(data$y_test, pred), "\n")
 cat("R2:", r2_score(data$y_test, pred), "\n")
-
-
-# =========================
-# SAMPLE PREDICTIONS
-# =========================
-cat("\nSample Predictions:\n")
-print(data.frame(
-  Actual=data$y_test[1:10],
-  Predicted=round(pred[1:10],2)
-))
