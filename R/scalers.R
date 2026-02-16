@@ -13,6 +13,11 @@ StandardScaler <- setRefClass(
 
     fit=function(X){
       X <- as.matrix(X)
+      if (ncol(X) == 0L) {
+        mean <<- numeric(0)
+        sd <<- numeric(0)
+        return(invisible(NULL))
+      }
       if (exists("cpp_scale_fit_transform", mode="function")) {
         out <- cpp_scale_fit_transform(X)
         mean <<- out$mean
@@ -22,6 +27,7 @@ StandardScaler <- setRefClass(
         sd <<- apply(X,2,sd)
         sd[sd==0] <<- 1
       }
+      invisible(NULL)
     },
 
     transform=function(X){
@@ -65,8 +71,14 @@ MinMaxScaler <- setRefClass(
 
     fit=function(X){
       X <- as.matrix(X)
+      if (ncol(X) == 0L) {
+        minv <<- numeric(0)
+        maxv <<- numeric(0)
+        return(invisible(NULL))
+      }
       minv <<- apply(X,2,min)
       maxv <<- apply(X,2,max)
+      invisible(NULL)
     },
 
     transform=function(X){

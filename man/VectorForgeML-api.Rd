@@ -5,6 +5,8 @@
 \alias{MinMaxScaler}
 \alias{LabelEncoder}
 \alias{OneHotEncoder}
+\alias{Pipeline}
+\alias{ColumnTransformer}
 \alias{fit_linear_model}
 \alias{predict_linear_model}
 \alias{drop_constant_columns}
@@ -12,17 +14,11 @@
 \alias{mse}
 \alias{rmse}
 \alias{r2_score}
-\alias{square_vec}
-\alias{sum2}
-\alias{cpp_sum_squares}
-\alias{dot_product}
-\alias{fastLm}
-\alias{cpp_drop_constant_cols}
 \title{VectorForgeML Main API}
 \description{Core modeling, preprocessing, and utility functions provided by VectorForgeML.}
 \details{
 The package provides a reference-class linear regression model, feature preprocessing helpers,
-and numeric utility functions implemented with an Rcpp backend.
+and pipeline composition utilities with an Rcpp backend.
 }
 \section{Model API}{
 \code{LinearRegression} supports \code{$fit(X, y)} and \code{$predict(X)}.
@@ -33,9 +29,8 @@ and numeric utility functions implemented with an Rcpp backend.
 and \code{drop_constant_columns()} (C++-backed).
 }
 \section{Utilities}{
-\code{train_test_split}, \code{mse}, \code{rmse}, \code{r2_score}, \code{square_vec},
-\code{sum2}, \code{cpp_sum_squares}, \code{dot_product}, \code{fastLm},
-and \code{cpp_drop_constant_cols}.
+\code{Pipeline}, \code{ColumnTransformer}, \code{train_test_split},
+\code{mse}, \code{rmse}, and \code{r2_score}.
 }
 \keyword{models}
 \keyword{utilities}

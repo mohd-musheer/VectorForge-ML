@@ -1,4 +1,5 @@
 #include <Rcpp.h>
+#include <R_ext/BLAS.h>
 
 using namespace Rcpp;
 
@@ -17,11 +18,8 @@ double cpp_sum_squares(int n) {
   if (n <= 0) {
     return 0.0;
   }
-  double s = 0.0;
-  for (int i = 1; i <= n; ++i) {
-    s += static_cast<double>(i) * static_cast<double>(i);
-  }
-  return s;
+  const double dn = static_cast<double>(n);
+  return dn * (dn + 1.0) * (2.0 * dn + 1.0) / 6.0;
 }
 
 // [[Rcpp::export]]
@@ -31,9 +29,6 @@ double dot_product(NumericVector a, NumericVector b) {
   }
 
   const int n = a.size();
-  double s = 0.0;
-  for (int i = 0; i < n; ++i) {
-    s += a[i] * b[i];
-  }
-  return s;
+  const int inc = 1;
+  return F77_CALL(ddot)(&n, a.begin(), &inc, b.begin(), &inc);
 }

@@ -37,14 +37,22 @@ OneHotEncoder <- setRefClass(
   methods=list(
 
     fit=function(df){
+      if (!is.data.frame(df)) {
+        stop("OneHotEncoder$fit expects a data.frame")
+      }
 
       categories <<- lapply(df, function(col)
-        unique(col)
+        unique(as.character(col))
       )
 
+      invisible(NULL)
     },
 
     transform=function(df){
+      if (!is.data.frame(df)) {
+        stop("OneHotEncoder$transform expects a data.frame")
+      }
+
       n <- nrow(df)
       if (n == 0) {
         return(matrix(numeric(0), nrow=0, ncol=0))
@@ -57,7 +65,7 @@ OneHotEncoder <- setRefClass(
 
       col_start <- 1L
       for(colname in names(df)){
-        col <- df[[colname]]
+        col <- as.character(df[[colname]])
         cats <- categories[[colname]]
         k <- length(cats)
         if (k == 0) {
