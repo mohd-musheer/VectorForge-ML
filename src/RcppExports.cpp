@@ -94,6 +94,54 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// logreg_create
+SEXP logreg_create();
+RcppExport SEXP _VectorForgeML_logreg_create() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(logreg_create());
+    return rcpp_result_gen;
+END_RCPP
+}
+// logreg_fit
+void logreg_fit(SEXP ptr, NumericMatrix X, NumericVector y, double lr, int epochs);
+RcppExport SEXP _VectorForgeML_logreg_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP ySEXP, SEXP lrSEXP, SEXP epochsSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type lr(lrSEXP);
+    Rcpp::traits::input_parameter< int >::type epochs(epochsSEXP);
+    logreg_fit(ptr, X, y, lr, epochs);
+    return R_NilValue;
+END_RCPP
+}
+// logreg_predict
+NumericVector logreg_predict(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_logreg_predict(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(logreg_predict(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logreg_predict_proba
+NumericVector logreg_predict_proba(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_logreg_predict_proba(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(logreg_predict_proba(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // square_vec
 NumericVector square_vec(NumericVector x);
 RcppExport SEXP _VectorForgeML_square_vec(SEXP xSEXP) {
@@ -158,6 +206,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_VectorForgeML_cpp_scale_fit_transform", (DL_FUNC) &_VectorForgeML_cpp_scale_fit_transform, 2},
     {"_VectorForgeML_cpp_scale_transform", (DL_FUNC) &_VectorForgeML_cpp_scale_transform, 4},
     {"_VectorForgeML_cpp_drop_constant_cols", (DL_FUNC) &_VectorForgeML_cpp_drop_constant_cols, 2},
+    {"_VectorForgeML_logreg_create", (DL_FUNC) &_VectorForgeML_logreg_create, 0},
+    {"_VectorForgeML_logreg_fit", (DL_FUNC) &_VectorForgeML_logreg_fit, 5},
+    {"_VectorForgeML_logreg_predict", (DL_FUNC) &_VectorForgeML_logreg_predict, 2},
+    {"_VectorForgeML_logreg_predict_proba", (DL_FUNC) &_VectorForgeML_logreg_predict_proba, 2},
     {"_VectorForgeML_square_vec", (DL_FUNC) &_VectorForgeML_square_vec, 1},
     {"_VectorForgeML_sum2", (DL_FUNC) &_VectorForgeML_sum2, 2},
     {"_VectorForgeML_cpp_sum_squares", (DL_FUNC) &_VectorForgeML_cpp_sum_squares, 1},

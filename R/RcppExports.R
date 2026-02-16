@@ -29,6 +29,22 @@ cpp_drop_constant_cols <- function(X, eps = 1e-12) {
     .Call(`_VectorForgeML_cpp_drop_constant_cols`, X, eps)
 }
 
+logreg_create <- function() {
+    .Call(`_VectorForgeML_logreg_create`)
+}
+
+logreg_fit <- function(ptr, X, y, lr = 0.1, epochs = 100L) {
+    invisible(.Call(`_VectorForgeML_logreg_fit`, ptr, X, y, lr, epochs))
+}
+
+logreg_predict <- function(ptr, X) {
+    .Call(`_VectorForgeML_logreg_predict`, ptr, X)
+}
+
+logreg_predict_proba <- function(ptr, X) {
+    .Call(`_VectorForgeML_logreg_predict_proba`, ptr, X)
+}
+
 square_vec <- function(x) {
     .Call(`_VectorForgeML_square_vec`, x)
 }
