@@ -78,7 +78,7 @@ g++ src/main.cpp src/linear_regression.cpp -o vectorforge
 ./vectorforge
 ```
 
-Use Linear Regression
+### Load Framework
 ```bash
 install.packages("remotes", repos="https://cloud.r-project.org")
 
@@ -90,38 +90,12 @@ ls("package:VectorForgeML")
 cat("Loading dataset...\n")
 
 df <- read.csv(system.file("dataset","cars.csv", package="VectorForgeML"))
-df <- df[rep(1:nrow(df), 10), ]
-cat("Rows:", nrow(df), "\n")
 
-y <- df$msrp
-df$msrp <- NULL
-
-cat_cols <- sapply(df, is.character)
-cat_df <- df[, cat_cols, drop = FALSE]
-num_df <- df[, !cat_cols, drop = FALSE]
-
-start <- Sys.time()
-
-encoder <- OneHotEncoder$new()
-cat_encoded <- encoder$fit_transform(cat_df)
-
-X <- cbind(as.matrix(num_df), cat_encoded)
-
-X <- cpp_drop_constant_cols(X)$X
-
-
-data <- train_test_split(X, y, seed = 42)
-scaler <- StandardScaler$new()
-X_train <- scaler$fit_transform(data$X_train)
-
-model <- LinearRegression$new()
-model$fit(X_train, data$y_train)
-
-end <- Sys.time()
-cat("\nYour Framework Time:", as.numeric(end - start), "seconds\n")
 ```
 
-Kaggle Notebook : https://www.kaggle.com/code/almusheer/linear-regression-vectorforgeml
+### Kaggle Notebooks :-
+Linear Regression : https://www.kaggle.com/code/almusheer/linear-regression-vectorforgeml
+PipeLine : https://www.kaggle.com/code/almusheer/pipeline-vectorforgeml
 
 (Advanced build system using CMake will be added in future versions.)
 
