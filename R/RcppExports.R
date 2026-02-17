@@ -45,6 +45,18 @@ logreg_predict_proba <- function(ptr, X) {
     .Call(`_VectorForgeML_logreg_predict_proba`, ptr, X)
 }
 
+ridge_create <- function() {
+    .Call(`_VectorForgeML_ridge_create`)
+}
+
+ridge_fit <- function(ptr, X, y, lambda = 1.0) {
+    invisible(.Call(`_VectorForgeML_ridge_fit`, ptr, X, y, lambda))
+}
+
+ridge_predict <- function(ptr, X) {
+    .Call(`_VectorForgeML_ridge_predict`, ptr, X)
+}
+
 softmax_create <- function() {
     .Call(`_VectorForgeML_softmax_create`)
 }
