@@ -10,6 +10,42 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// knn_create
+SEXP knn_create(int k, int mode);
+RcppExport SEXP _VectorForgeML_knn_create(SEXP kSEXP, SEXP modeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type mode(modeSEXP);
+    rcpp_result_gen = Rcpp::wrap(knn_create(k, mode));
+    return rcpp_result_gen;
+END_RCPP
+}
+// knn_fit
+void knn_fit(SEXP ptr, NumericMatrix X, NumericVector y);
+RcppExport SEXP _VectorForgeML_knn_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    knn_fit(ptr, X, y);
+    return R_NilValue;
+END_RCPP
+}
+// knn_predict
+NumericVector knn_predict(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_knn_predict(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(knn_predict(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // lr_create
 SEXP lr_create();
 RcppExport SEXP _VectorForgeML_lr_create() {
@@ -282,6 +318,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_VectorForgeML_knn_create", (DL_FUNC) &_VectorForgeML_knn_create, 2},
+    {"_VectorForgeML_knn_fit", (DL_FUNC) &_VectorForgeML_knn_fit, 3},
+    {"_VectorForgeML_knn_predict", (DL_FUNC) &_VectorForgeML_knn_predict, 2},
     {"_VectorForgeML_lr_create", (DL_FUNC) &_VectorForgeML_lr_create, 0},
     {"_VectorForgeML_lr_fit", (DL_FUNC) &_VectorForgeML_lr_fit, 3},
     {"_VectorForgeML_lr_predict", (DL_FUNC) &_VectorForgeML_lr_predict, 2},
