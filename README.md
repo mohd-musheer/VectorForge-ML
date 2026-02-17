@@ -106,6 +106,12 @@ Ridge Regression : https://www.kaggle.com/code/almusheer/ridge-regression-vector
 
 KNN : https://www.kaggle.com/code/almusheer/knn-vectorforgeml
 
+Decision Tree and PCA : https://www.kaggle.com/code/almusheer/decision-tree-vectorforge-ml
+
+Random Forest : https://www.kaggle.com/code/almusheer/randomforest-vectorforgeml
+
+KMeans : https://www.kaggle.com/code/almusheer/kmeans-vectorforgeml
+
 (Advanced build system using CMake will be added in future versions.)
 
 ---
