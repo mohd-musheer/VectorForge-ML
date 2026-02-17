@@ -10,6 +10,76 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// dt_create
+SEXP dt_create(int depth);
+RcppExport SEXP _VectorForgeML_dt_create(SEXP depthSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type depth(depthSEXP);
+    rcpp_result_gen = Rcpp::wrap(dt_create(depth));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dt_fit
+void dt_fit(SEXP ptr, NumericMatrix X, NumericVector y);
+RcppExport SEXP _VectorForgeML_dt_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    dt_fit(ptr, X, y);
+    return R_NilValue;
+END_RCPP
+}
+// dt_predict
+NumericVector dt_predict(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_dt_predict(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(dt_predict(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// kmeans_create
+SEXP kmeans_create(int k);
+RcppExport SEXP _VectorForgeML_kmeans_create(SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(kmeans_create(k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// kmeans_fit
+void kmeans_fit(SEXP ptr, NumericMatrix X, int max_iter);
+RcppExport SEXP _VectorForgeML_kmeans_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP max_iterSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type max_iter(max_iterSEXP);
+    kmeans_fit(ptr, X, max_iter);
+    return R_NilValue;
+END_RCPP
+}
+// kmeans_predict
+IntegerVector kmeans_predict(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_kmeans_predict(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(kmeans_predict(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // knn_create
 SEXP knn_create(int k, int mode);
 RcppExport SEXP _VectorForgeML_knn_create(SEXP kSEXP, SEXP modeSEXP) {
@@ -178,6 +248,78 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// pca_create
+SEXP pca_create(int ncomp);
+RcppExport SEXP _VectorForgeML_pca_create(SEXP ncompSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type ncomp(ncompSEXP);
+    rcpp_result_gen = Rcpp::wrap(pca_create(ncomp));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pca_fit
+void pca_fit(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_pca_fit(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    pca_fit(ptr, X);
+    return R_NilValue;
+END_RCPP
+}
+// pca_transform
+NumericMatrix pca_transform(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_pca_transform(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(pca_transform(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rf_create
+SEXP rf_create(int ntrees, int depth, int mtry, bool cls);
+RcppExport SEXP _VectorForgeML_rf_create(SEXP ntreesSEXP, SEXP depthSEXP, SEXP mtrySEXP, SEXP clsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type ntrees(ntreesSEXP);
+    Rcpp::traits::input_parameter< int >::type depth(depthSEXP);
+    Rcpp::traits::input_parameter< int >::type mtry(mtrySEXP);
+    Rcpp::traits::input_parameter< bool >::type cls(clsSEXP);
+    rcpp_result_gen = Rcpp::wrap(rf_create(ntrees, depth, mtry, cls));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rf_fit
+void rf_fit(SEXP ptr, NumericMatrix X, NumericVector y);
+RcppExport SEXP _VectorForgeML_rf_fit(SEXP ptrSEXP, SEXP XSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rf_fit(ptr, X, y);
+    return R_NilValue;
+END_RCPP
+}
+// rf_predict
+NumericVector rf_predict(SEXP ptr, NumericMatrix X);
+RcppExport SEXP _VectorForgeML_rf_predict(SEXP ptrSEXP, SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type ptr(ptrSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(rf_predict(ptr, X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ridge_create
 SEXP ridge_create();
 RcppExport SEXP _VectorForgeML_ridge_create() {
@@ -318,6 +460,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_VectorForgeML_dt_create", (DL_FUNC) &_VectorForgeML_dt_create, 1},
+    {"_VectorForgeML_dt_fit", (DL_FUNC) &_VectorForgeML_dt_fit, 3},
+    {"_VectorForgeML_dt_predict", (DL_FUNC) &_VectorForgeML_dt_predict, 2},
+    {"_VectorForgeML_kmeans_create", (DL_FUNC) &_VectorForgeML_kmeans_create, 1},
+    {"_VectorForgeML_kmeans_fit", (DL_FUNC) &_VectorForgeML_kmeans_fit, 3},
+    {"_VectorForgeML_kmeans_predict", (DL_FUNC) &_VectorForgeML_kmeans_predict, 2},
     {"_VectorForgeML_knn_create", (DL_FUNC) &_VectorForgeML_knn_create, 2},
     {"_VectorForgeML_knn_fit", (DL_FUNC) &_VectorForgeML_knn_fit, 3},
     {"_VectorForgeML_knn_predict", (DL_FUNC) &_VectorForgeML_knn_predict, 2},
@@ -332,6 +480,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_VectorForgeML_logreg_fit", (DL_FUNC) &_VectorForgeML_logreg_fit, 5},
     {"_VectorForgeML_logreg_predict", (DL_FUNC) &_VectorForgeML_logreg_predict, 2},
     {"_VectorForgeML_logreg_predict_proba", (DL_FUNC) &_VectorForgeML_logreg_predict_proba, 2},
+    {"_VectorForgeML_pca_create", (DL_FUNC) &_VectorForgeML_pca_create, 1},
+    {"_VectorForgeML_pca_fit", (DL_FUNC) &_VectorForgeML_pca_fit, 2},
+    {"_VectorForgeML_pca_transform", (DL_FUNC) &_VectorForgeML_pca_transform, 2},
+    {"_VectorForgeML_rf_create", (DL_FUNC) &_VectorForgeML_rf_create, 4},
+    {"_VectorForgeML_rf_fit", (DL_FUNC) &_VectorForgeML_rf_fit, 3},
+    {"_VectorForgeML_rf_predict", (DL_FUNC) &_VectorForgeML_rf_predict, 2},
     {"_VectorForgeML_ridge_create", (DL_FUNC) &_VectorForgeML_ridge_create, 0},
     {"_VectorForgeML_ridge_fit", (DL_FUNC) &_VectorForgeML_ridge_fit, 4},
     {"_VectorForgeML_ridge_predict", (DL_FUNC) &_VectorForgeML_ridge_predict, 2},
