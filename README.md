@@ -104,6 +104,8 @@ Softmax Regression : https://www.kaggle.com/code/almusheer/softmax-regression-ve
 
 Ridge Regression : https://www.kaggle.com/code/almusheer/ridge-regression-vectorforgeml
 
+KNN : https://www.kaggle.com/code/almusheer/knn-vectorforgeml
+
 (Advanced build system using CMake will be added in future versions.)
 
 ---
