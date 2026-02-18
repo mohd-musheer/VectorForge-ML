@@ -1,0 +1,30 @@
+* installing *source* package 'VectorForgeML' ...
+** this is package 'VectorForgeML' version '0.1.0'
+** using staged installation
+** libs
+using C++ compiler: 'G__~1.EXE (GCC) 13.3.0'
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c DecisionTree.cpp -o DecisionTree.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c KMeans.cpp -o KMeans.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c KNN.cpp -o KNN.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c LinearRegression.cpp -o LinearRegression.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c LogisticRegression.cpp -o LogisticRegression.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c PCA.cpp -o PCA.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c RandomForest.cpp -o RandomForest.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c RidgeRegression.cpp -o RidgeRegression.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c SoftmaxRegression.cpp -o SoftmaxRegression.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c functions.cpp -o functions.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c init.cpp -o init.o
+g++ -std=gnu++17  -I"C:/PROGRA~1/R/R-45~1.2/include" -DNDEBUG  -I'C:/Users/mushe/AppData/Local/R/win-library/4.5/Rcpp/include'   -I"c:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp   -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c matrix_ops.cpp -o matrix_ops.o
+g++ -std=gnu++17 -shared -s -static-libgcc -o VectorForgeML.dll tmp.def DecisionTree.o KMeans.o KNN.o LinearRegression.o LogisticRegression.o PCA.o RandomForest.o RcppExports.o RidgeRegression.o SoftmaxRegression.o functions.o init.o matrix_ops.o -fopenmp -LC:/PROGRA~1/R/R-45~1.2/bin/x64 -lRlapack -LC:/PROGRA~1/R/R-45~1.2/bin/x64 -lRblas -lgfortran -lquadmath -Lc:/rtools45/x86_64-w64-mingw32.static.posix/lib/x64 -Lc:/rtools45/x86_64-w64-mingw32.static.posix/lib -LC:/PROGRA~1/R/R-45~1.2/bin/x64 -lR
+installing to E:/VectorForgeML/VectorForgeML.Rcheck/00LOCK-VectorForgeML/00new/VectorForgeML/libs/x64
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (VectorForgeML)

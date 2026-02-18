@@ -1,0 +1,16 @@
+Package: VectorForgeML
+Type: Package
+Title: High Performance ML Backend
+Version: 0.1.0
+Author: Musheer
+Maintainer: Musheer <musheerayan@gmail.com>
+Description: Fast ML primitives written in C++.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Imports: methods, Rcpp
+LinkingTo: Rcpp
+SystemRequirements: OpenMP (optional)
+RoxygenNote: 7.3.3
+NeedsCompilation: yes
+Packaged: 2026-02-18 09:36:33 UTC; mushe
