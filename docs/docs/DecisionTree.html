@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decision Tree Regressor - VectorForgeML Documentation</title>
-    <meta name="description" content="A high-performance, recursive partitioning algorithm that constructs a regression tree by exhaustively searching for optimal splits. Unlike standard implementat...">
-    <meta name="keywords" content="Decision Tree Regressor, DecisionTree, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/DecisionTree.html">
-    
+    <meta name="description"
+        content="A high-performance, recursive partitioning algorithm that constructs a regression tree by exhaustively searching for optimal splits. Unlike standard implementat...">
+    <meta name="keywords"
+        content="Decision Tree Regressor, DecisionTree, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/DecisionTree.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Decision Tree Regressor - High Performance Implementation">
-    <meta property="og:description" content="A high-performance, recursive partitioning algorithm that constructs a regression tree by exhaustively searching for optimal splits. Unlike standard implementations, vectorForgeML's Decision Tree is b...">
+    <meta property="og:description"
+        content="A high-performance, recursive partitioning algorithm that constructs a regression tree by exhaustively searching for optimal splits. Unlike standard implementations, vectorForgeML's Decision Tree is b...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/DecisionTree.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/DecisionTree.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="../assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,12 +46,13 @@
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }
     </script>
 </head>
+
 <body class="docs-layout">
     <div id="navbar"></div>
     <div id="sidebar"></div>
@@ -54,26 +60,51 @@
     <div class="layout-container">
         <main class="main-content">
             <div style="margin-bottom: 2rem;">
-                <span style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
+                <span
+                    style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
                 <h1 class="fade-in" style="margin-top: 0.5rem;">Decision Tree Regressor</h1>
             </div>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-bottom: 2rem;">
                 <h3>Description</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
-                    A high-performance, recursive partitioning algorithm that constructs a regression tree by exhaustively searching for optimal splits. Unlike standard implementations, vectorForgeML's Decision Tree is built directly in C++ using raw pointers for graph construction, ensuring minimal memory overhead and cache-friendly traversal. It supports deep trees and handles continuous features with high precision. The model predicts the target value by traversing the tree from root to leaf, where each node represents a decision rule based on a single feature threshold.
+                    A high-performance, recursive partitioning algorithm that constructs a regression tree by
+                    exhaustively searching for optimal splits. Unlike standard implementations, vectorForgeML's Decision
+                    Tree is built directly in C++ using raw pointers for graph construction, ensuring minimal memory
+                    overhead and cache-friendly traversal. It supports deep trees and handles continuous features with
+                    high precision. The model predicts the target value by traversing the tree from root to leaf, where
+                    each node represents a decision rule based on a single feature threshold.
                 </p>
-                <div class="glass-panel" style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">$$ \min_{j, s} \left[ \min_{c_1} \sum_{x_i \in R_1(j,s)} (y_i - c_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j,s)} (y_i - c_2)^2 \right] $$</div>
+                <div class="glass-panel"
+                    style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">
+                    $$ \min_{j, s} \left[ \min_{c_1} \sum_{x_i \in R_1(j,s)} (y_i - c_1)^2 + \min_{c_2} \sum_{x_i \in
+                    R_2(j,s)} (y_i - c_2)^2 \right] $$</div>
             </section>
             <!-- Injected Structure -->
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Parameters</h3>
                 <div class="glass-panel" style="padding: 1rem;">
                     <table style="margin:0; border:none;">
-                        <tr><th style="padding-left:0;">Name</th><th>Type</th><th>Description</th></tr>
-                        <tr><td style="padding-left:0;"><code>x</code></td><td>Matrix</td><td>Input feature matrix.</td></tr>
-                        <tr><td style="padding-left:0;"><code>y</code></td><td>Vector</td><td>Target vector.</td></tr>
-                        <tr><td style="padding-left:0; border-bottom:none;"><code>...</code></td><td style="border-bottom:none;">...</td><td style="border-bottom:none;">Additional parameters.</td></tr>
+                        <tr>
+                            <th style="padding-left:0;">Name</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:0;"><code>x</code></td>
+                            <td>Matrix</td>
+                            <td>Input feature matrix.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:0;"><code>y</code></td>
+                            <td>Vector</td>
+                            <td>Target vector.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left:0; border-bottom:none;"><code>...</code></td>
+                            <td style="border-bottom:none;">...</td>
+                            <td style="border-bottom:none;">Additional parameters.</td>
+                        </tr>
                     </table>
                 </div>
             </section>
@@ -99,61 +130,79 @@ preds <- model$predict(X)</code></pre>
 
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Output Example</h3>
-                <div class="glass-panel" style="padding: 1.5rem; font-family: 'Fira Code', monospace; color: var(--text-secondary); font-size: 0.9rem;">
+                <div class="glass-panel"
+                    style="padding: 1.5rem; font-family: 'Fira Code', monospace; color: var(--text-secondary); font-size: 0.9rem;">
                     [1] 0.234 0.567 -0.123 ...
                 </div>
             </section>
-            
+
             <section class="slide-up" style="animation-delay: 0.25s; margin-top: 3rem;">
                 <h3>How it Works</h3>
-                 <div class="glass-panel" style="padding: 2rem;">
-                    <p style="color: var(--text-secondary);">The internal mechanism involves optimized C++ routines...</p>
+                <div class="glass-panel" style="padding: 2rem;">
+                    <p style="color: var(--text-secondary);">The internal mechanism involves optimized C++ routines...
+                    </p>
                 </div>
             </section>
-    
 
-            
+
+
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Algorithm Workflow</h3>
                 <div class="workflow-container">
                     <div class="workflow-step">
-                                <span class="workflow-key">START</span>
-                                <span class="workflow-val">Initialize the tree building process with the full dataset (X, y) at the root node.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">CHECK</span>
-                                <span class="workflow-val">Verify if current depth < max_depth and if variance in target y > 0.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">SEARCH</span>
-                                <span class="workflow-val">Iterate through ALL features (j=1..p) and ALL unique thresholds to find the optimal split.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">CRITERION</span>
-                                <span class="workflow-val">Calculate the Cost Function (MSE Reduction) for every potential split: Cost = (n_L/n)*MSE_L + (n_R/n)*MSE_R.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">SPLIT</span>
-                                <span class="workflow-val">Partition the data into Left (L) and Right (R) subsets based on the best feature/threshold pair.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">RECURSE</span>
-                                <span class="workflow-val">Recursively call the build function on L and R subsets.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">LEAF</span>
-                                <span class="workflow-val">Create a leaf node if stopping criteria are met. Store the mean value $\bar{y}$ of the node's samples.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">OPTIMIZE</span>
-                                <span class="workflow-val">Use index-based views (no deep copies) to pass data subsets to child nodes.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">END</span>
-                                <span class="workflow-val">Return the root pointer of the constructed tree structure.</span>
-                            </div>
+                        <span class="workflow-key">START</span>
+                        <span class="workflow-val">Initialize the tree building process with the full dataset (X, y) at
+                            the root node.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">CHECK</span>
+                        <span class="workflow-val">Verify if current depth < max_depth and if variance in target y>
+                                0.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">SEARCH</span>
+                        <span class="workflow-val">Iterate through ALL features (j=1..p) and ALL unique thresholds to
+                            find the optimal split.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">CRITERION</span>
+                        <span class="workflow-val">Calculate the Cost Function (MSE Reduction) for every potential
+                            split: Cost = (n_L/n)*MSE_L + (n_R/n)*MSE_R.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">SPLIT</span>
+                        <span class="workflow-val">Partition the data into Left (L) and Right (R) subsets based on the
+                            best feature/threshold pair.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">RECURSE</span>
+                        <span class="workflow-val">Recursively call the build function on L and R subsets.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">LEAF</span>
+                        <span class="workflow-val">Create a leaf node if stopping criteria are met. Store the mean value
+                            $\bar{y}$ of the node's samples.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">OPTIMIZE</span>
+                        <span class="workflow-val">Use index-based views (no deep copies) to pass data subsets to child
+                            nodes.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">END</span>
+                        <span class="workflow-val">Return the root pointer of the constructed tree structure.</span>
+                    </div>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Implementation Details</h3>
                 <div class="glass-panel" style="padding: 2rem;">
-                    <p style="color: var(--text-secondary);">Implemented in `DecisionTree.cpp`. Recursively partitions data.</p>
+                    <p style="color: var(--text-secondary);">Implemented in `DecisionTree.cpp`. Recursively partitions
+                        data.</p>
                 </div>
-                
+
                 <div class="glass-panel" style="margin-top: 1.5rem; padding: 0; overflow: hidden;">
                     <pre><code class="language-cpp" style="font-size: 0.85rem;">Node* build(NumericMatrix X, NumericVector y, int depth,int maxd){
     // ... (find best split based on minimizing MSE) ...
@@ -168,13 +217,14 @@ preds <- model$predict(X)</code></pre>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.3s; margin-top: 3rem;">
                 <h3>Complexity & Optimization</h3>
                 <div class="grid-2">
                     <div class="glass-panel" style="padding: 1.5rem;">
                         <h4 style="margin-bottom: 0.5rem; color: var(--accent-secondary);">Time Complexity</h4>
-                        <p style="color: var(--text-secondary); margin: 0;">Training: O(N * P * D). Prediction: O(D).</p>
+                        <p style="color: var(--text-secondary); margin: 0;">Training: O(N * P * D). Prediction: O(D).
+                        </p>
                     </div>
                     <div class="glass-panel" style="padding: 1.5rem;">
                         <h4 style="margin-bottom: 0.5rem; color: var(--accent-primary);">Space Complexity</h4>
@@ -182,7 +232,8 @@ preds <- model$predict(X)</code></pre>
                     </div>
                     <div class="glass-panel" style="padding: 1.5rem;">
                         <h4 style="margin-bottom: 0.5rem; color: var(--text-primary);">Optimizations</h4>
-                        <p style="color: var(--text-secondary); margin: 0;">Recursive implementation with index passing.</p>
+                        <p style="color: var(--text-secondary); margin: 0;">Recursive implementation with index passing.
+                        </p>
                     </div>
                     <div class="glass-panel" style="padding: 1.5rem;">
                         <h4 style="margin-bottom: 0.5rem; color: #ef4444;">Limitations</h4>
@@ -191,22 +242,23 @@ preds <- model$predict(X)</code></pre>
                 </div>
             </section>
 
-             <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
+            <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
                 <h3>Use Cases</h3>
-                 <p style="color: var(--text-secondary);">Non-linear regression.</p>
+                <p style="color: var(--text-secondary);">Non-linear regression.</p>
             </section>
 
-        
+
             <section class="slide-up" style="animation-delay: 0.5s; margin-top: 3rem;">
                 <h3>Notes</h3>
                 <div class="glass-panel" style="padding: 1.5rem; border-left: 4px solid var(--accent-secondary);">
                     <p style="color: var(--text-secondary); margin:0;">Performance scales linearly with input size.</p>
                 </div>
             </section>
-    </main>
+        </main>
     </div>
 
     <div id="footer"></div>
     <script type="module" src="../assets/js/main.js" defer></script>
 </body>
+
 </html>

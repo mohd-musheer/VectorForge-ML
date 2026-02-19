@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridge Regression - VectorForgeML Documentation</title>
-    <meta name="description" content="A regularized linear regression method that solves the ill-posed problem where features are highly correlated (multicollinearity). By adding an L2 penalty to th...">
-    <meta name="keywords" content="Ridge Regression, RidgeRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/RidgeRegression.html">
-    
+    <meta name="description"
+        content="A regularized linear regression method that solves the ill-posed problem where features are highly correlated (multicollinearity). By adding an L2 penalty to th...">
+    <meta name="keywords"
+        content="Ridge Regression, RidgeRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/RidgeRegression.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Ridge Regression - High Performance Implementation">
-    <meta property="og:description" content="A regularized linear regression method that solves the ill-posed problem where features are highly correlated (multicollinearity). By adding an L2 penalty to the loss function, it shrinks the coeffici...">
+    <meta property="og:description"
+        content="A regularized linear regression method that solves the ill-posed problem where features are highly correlated (multicollinearity). By adding an L2 penalty to the loss function, it shrinks the coeffici...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/RidgeRegression.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/RidgeRegression.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,12 +46,13 @@
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }
     </script>
 </head>
+
 <body class="docs-layout">
     <div id="navbar"></div>
     <div id="sidebar"></div>
@@ -54,54 +60,69 @@
     <div class="layout-container">
         <main class="main-content">
             <div style="margin-bottom: 2rem;">
-                <span style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
+                <span
+                    style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
                 <h1 class="fade-in" style="margin-top: 0.5rem;">Ridge Regression</h1>
             </div>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-bottom: 2rem;">
                 <h3>Description</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
-                    A regularized linear regression method that solves the ill-posed problem where features are highly correlated (multicollinearity). By adding an L2 penalty to the loss function, it shrinks the coefficients towards zero, reducing model variance. Our implementation efficiently adds this penalty directly to the Gram matrix ($X^T X$) before solving, utilizing the same optimized BLAS routines as standard Linear Regression.
+                    A regularized linear regression method that solves the ill-posed problem where features are highly
+                    correlated (multicollinearity). By adding an L2 penalty to the loss function, it shrinks the
+                    coefficients towards zero, reducing model variance. Our implementation efficiently adds this penalty
+                    directly to the Gram matrix ($X^T X$) before solving, utilizing the same optimized BLAS routines as
+                    standard Linear Regression.
                 </p>
-                <div class="glass-panel" style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">$$ \hat{\beta}^{ridge} = (X^T X + \lambda I)^{-1} X^T y $$</div>
+                <div class="glass-panel"
+                    style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">
+                    $$ \hat{\beta}^{ridge} = (X^T X + \lambda I)^{-1} X^T y $$</div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Algorithm Workflow</h3>
                 <div class="workflow-container">
                     <div class="workflow-step">
-                                <span class="workflow-key">START</span>
-                                <span class="workflow-val">Receive Matrix X and Vector y.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">COMPUTE</span>
-                                <span class="workflow-val">Calculate the covariance/Gram matrix $A = X^T X$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">REGULARIZE</span>
-                                <span class="workflow-val">Add $\lambda$ (alpha) to the diagonal elements: $A_{ii} \leftarrow A_{ii} + \lambda$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">RHS</span>
-                                <span class="workflow-val">Calculate the right-hand side vector $b = X^T y$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">SOLVE</span>
-                                <span class="workflow-val">Solve the linear system $A \beta = b$ using Cholesky Decomposition.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">FALLBACK</span>
-                                <span class="workflow-val">If Cholesky fails (rare), use LU Decomposition.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">END</span>
-                                <span class="workflow-val">Return robust coefficients $\beta$.</span>
-                            </div>
+                        <span class="workflow-key">START</span>
+                        <span class="workflow-val">Receive Matrix X and Vector y.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">COMPUTE</span>
+                        <span class="workflow-val">Calculate the covariance/Gram matrix $A = X^T X$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">REGULARIZE</span>
+                        <span class="workflow-val">Add $\lambda$ (alpha) to the diagonal elements: $A_{ii} \leftarrow
+                            A_{ii} + \lambda$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">RHS</span>
+                        <span class="workflow-val">Calculate the right-hand side vector $b = X^T y$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">SOLVE</span>
+                        <span class="workflow-val">Solve the linear system $A \beta = b$ using Cholesky
+                            Decomposition.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">FALLBACK</span>
+                        <span class="workflow-val">If Cholesky fails (rare), use LU Decomposition.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">END</span>
+                        <span class="workflow-val">Return robust coefficients $\beta$.</span>
+                    </div>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Implementation Details</h3>
                 <div class="glass-panel" style="padding: 2rem;">
                     <p style="color: var(--text-secondary);">Implemented in `RidgeRegression.cpp`.</p>
                 </div>
-                
+
                 <div class="glass-panel" style="margin-top: 1.5rem; padding: 0; overflow: hidden;">
                     <pre><code class="language-cpp" style="font-size: 0.85rem;">// Add regularization
 for(int j=0; j&lt;p; ++j)
@@ -111,7 +132,7 @@ F77_CALL(dposv)(...);</code></pre>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.3s; margin-top: 3rem;">
                 <h3>Complexity & Optimization</h3>
                 <div class="grid-2">
@@ -134,9 +155,9 @@ F77_CALL(dposv)(...);</code></pre>
                 </div>
             </section>
 
-             <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
+            <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
                 <h3>Use Cases</h3>
-                 <p style="color: var(--text-secondary);">Correlated features.</p>
+                <p style="color: var(--text-secondary);">Correlated features.</p>
             </section>
 
         </main>
@@ -145,4 +166,5 @@ F77_CALL(dposv)(...);</code></pre>
     <div id="footer"></div>
     <script type="module" src="/assets/js/main.js"></script>
 </body>
+
 </html>

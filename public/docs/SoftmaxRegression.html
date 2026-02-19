@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Softmax Regression - VectorForgeML Documentation</title>
-    <meta name="description" content="An extension of Logistic Regression to multi-class problems. It models the probability that a sample belongs to a specific class k using the Softmax function. T...">
-    <meta name="keywords" content="Softmax Regression, SoftmaxRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/SoftmaxRegression.html">
-    
+    <meta name="description"
+        content="An extension of Logistic Regression to multi-class problems. It models the probability that a sample belongs to a specific class k using the Softmax function. T...">
+    <meta name="keywords"
+        content="Softmax Regression, SoftmaxRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/SoftmaxRegression.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Softmax Regression - High Performance Implementation">
-    <meta property="og:description" content="An extension of Logistic Regression to multi-class problems. It models the probability that a sample belongs to a specific class k using the Softmax function. The implementation relies on the 'Log-Sum...">
+    <meta property="og:description"
+        content="An extension of Logistic Regression to multi-class problems. It models the probability that a sample belongs to a specific class k using the Softmax function. The implementation relies on the 'Log-Sum...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/SoftmaxRegression.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/SoftmaxRegression.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,12 +46,13 @@
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }
     </script>
 </head>
+
 <body class="docs-layout">
     <div id="navbar"></div>
     <div id="sidebar"></div>
@@ -54,57 +60,72 @@
     <div class="layout-container">
         <main class="main-content">
             <div style="margin-bottom: 2rem;">
-                <span style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
+                <span
+                    style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
                 <h1 class="fade-in" style="margin-top: 0.5rem;">Softmax Regression</h1>
             </div>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-bottom: 2rem;">
                 <h3>Description</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
-                    An extension of Logistic Regression to multi-class problems. It models the probability that a sample belongs to a specific class k using the Softmax function. The implementation relies on the 'Log-Sum-Exp' trick to prevent numerical instability (overflow/underflow) during the exponentiation step. This is critical for stable training on datasets with unscaled features.
+                    An extension of Logistic Regression to multi-class problems. It models the probability that a sample
+                    belongs to a specific class k using the Softmax function. The implementation relies on the
+                    'Log-Sum-Exp' trick to prevent numerical instability (overflow/underflow) during the exponentiation
+                    step. This is critical for stable training on datasets with unscaled features.
                 </p>
-                <div class="glass-panel" style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">$$ P(y=j|\mathbf{x}) = \frac{e^{\mathbf{w}_j^T \mathbf{x}}}{\sum_{k=1}^K e^{\mathbf{w}_k^T \mathbf{x}}} $$</div>
+                <div class="glass-panel"
+                    style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">
+                    $$ P(y=j|\mathbf{x}) = \frac{e^{\mathbf{w}_j^T \mathbf{x}}}{\sum_{k=1}^K e^{\mathbf{w}_k^T
+                    \mathbf{x}}} $$</div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Algorithm Workflow</h3>
                 <div class="workflow-container">
                     <div class="workflow-step">
-                                <span class="workflow-key">START</span>
-                                <span class="workflow-val">Identify $K$ unique classes and initialize $W$ matrix ($P \times K$).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">EPOCH LOOP</span>
-                                <span class="workflow-val">Iterate through optimization steps.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">LOGITS</span>
-                                <span class="workflow-val">Compute raw scores $Z = XW$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">MAX TRICK</span>
-                                <span class="workflow-val">Find $M = \max(Z)$ for numerical stability.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">PROBABILITIES</span>
-                                <span class="workflow-val">Compute Softmax $P(k|x) = \exp(Z_k - M) / \sum \exp(Z_j - M)$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">LOSS GRAD</span>
-                                <span class="workflow-val">Compute gradients $\nabla W$ based on Cross-Entropy Loss.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">UPDATE</span>
-                                <span class="workflow-val">Adjust weights $W \leftarrow W - \eta \nabla W$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">END</span>
-                                <span class="workflow-val">Return trained weights for $K$ classes.</span>
-                            </div>
+                        <span class="workflow-key">START</span>
+                        <span class="workflow-val">Identify $K$ unique classes and initialize $W$ matrix ($P \times
+                            K$).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">EPOCH LOOP</span>
+                        <span class="workflow-val">Iterate through optimization steps.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">LOGITS</span>
+                        <span class="workflow-val">Compute raw scores $Z = XW$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">MAX TRICK</span>
+                        <span class="workflow-val">Find $M = \max(Z)$ for numerical stability.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">PROBABILITIES</span>
+                        <span class="workflow-val">Compute Softmax $P(k|x) = \exp(Z_k - M) / \sum \exp(Z_j - M)$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">LOSS GRAD</span>
+                        <span class="workflow-val">Compute gradients $\nabla W$ based on Cross-Entropy Loss.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">UPDATE</span>
+                        <span class="workflow-val">Adjust weights $W \leftarrow W - \eta \nabla W$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">END</span>
+                        <span class="workflow-val">Return trained weights for $K$ classes.</span>
+                    </div>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Implementation Details</h3>
                 <div class="glass-panel" style="padding: 2rem;">
                     <p style="color: var(--text-secondary);">Implemented in `SoftmaxRegression.cpp`.</p>
                 </div>
-                
+
                 <div class="glass-panel" style="margin-top: 1.5rem; padding: 0; overflow: hidden;">
                     <pre><code class="language-cpp" style="font-size: 0.85rem;">// Softmax with Log-Sum-Exp trick
 double max_z = max(logits);
@@ -114,7 +135,7 @@ probs[k] = exp(logits[k] - max_z) / sum_exp;</code></pre>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.3s; margin-top: 3rem;">
                 <h3>Complexity & Optimization</h3>
                 <div class="grid-2">
@@ -137,9 +158,9 @@ probs[k] = exp(logits[k] - max_z) / sum_exp;</code></pre>
                 </div>
             </section>
 
-             <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
+            <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
                 <h3>Use Cases</h3>
-                 <p style="color: var(--text-secondary);">Multiclass classification.</p>
+                <p style="color: var(--text-secondary);">Multiclass classification.</p>
             </section>
 
         </main>
@@ -148,4 +169,5 @@ probs[k] = exp(logits[k] - max_z) / sum_exp;</code></pre>
     <div id="footer"></div>
     <script type="module" src="/assets/js/main.js"></script>
 </body>
+
 </html>

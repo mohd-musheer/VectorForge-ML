@@ -98,14 +98,14 @@ const template = (algoName, data) => {
     <title>${title} - VectorForgeML Documentation</title>
     <meta name="description" content="${desc.substring(0, 160).replace(/"/g, '&quot;')}...">
     <meta name="keywords" content="${title}, ${algoName}, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/${algoName}.html">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/${algoName}.html">
     
     <!-- Open Graph -->
     <meta property="og:title" content="${title} - High Performance Implementation">
     <meta property="og:description" content="${desc.substring(0, 200).replace(/"/g, '&quot;')}...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/${algoName}.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/${algoName}.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -133,7 +133,7 @@ const template = (algoName, data) => {
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }

@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logistic Regression - VectorForgeML Documentation</title>
-    <meta name="description" content="A generalized linear model used for binary classification. It estimates the parameters of a logistic model using iterative optimization. Our implementation uses...">
-    <meta name="keywords" content="Logistic Regression, LogisticRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/LogisticRegression.html">
-    
+    <meta name="description"
+        content="A generalized linear model used for binary classification. It estimates the parameters of a logistic model using iterative optimization. Our implementation uses...">
+    <meta name="keywords"
+        content="Logistic Regression, LogisticRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/LogisticRegression.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Logistic Regression - High Performance Implementation">
-    <meta property="og:description" content="A generalized linear model used for binary classification. It estimates the parameters of a logistic model using iterative optimization. Our implementation uses a raw C++ full-batch Gradient Descent o...">
+    <meta property="og:description"
+        content="A generalized linear model used for binary classification. It estimates the parameters of a logistic model using iterative optimization. Our implementation uses a raw C++ full-batch Gradient Descent o...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/LogisticRegression.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/LogisticRegression.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,12 +46,13 @@
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }
     </script>
 </head>
+
 <body class="docs-layout">
     <div id="navbar"></div>
     <div id="sidebar"></div>
@@ -54,60 +60,79 @@
     <div class="layout-container">
         <main class="main-content">
             <div style="margin-bottom: 2rem;">
-                <span style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
+                <span
+                    style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
                 <h1 class="fade-in" style="margin-top: 0.5rem;">Logistic Regression</h1>
             </div>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-bottom: 2rem;">
                 <h3>Description</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
-                    A generalized linear model used for binary classification. It estimates the parameters of a logistic model using iterative optimization. Our implementation uses a raw C++ full-batch Gradient Descent optimizer with an inlined sigmoid activation function for maximum throughput. It handles large datasets by processing the entire batch in memory (or chunks if extended) and updates weights based on the gradient of the Log-Likelihood.
+                    A generalized linear model used for binary classification. It estimates the parameters of a logistic
+                    model using iterative optimization. Our implementation uses a raw C++ full-batch Gradient Descent
+                    optimizer with an inlined sigmoid activation function for maximum throughput. It handles large
+                    datasets by processing the entire batch in memory (or chunks if extended) and updates weights based
+                    on the gradient of the Log-Likelihood.
                 </p>
-                <div class="glass-panel" style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">$$ J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^{(i)}\log(h_\theta(x^{(i)})) + (1-y^{(i)})\log(1-h_\theta(x^{(i)}))] $$</div>
+                <div class="glass-panel"
+                    style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">
+                    $$ J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^{(i)}\log(h_\theta(x^{(i)})) +
+                    (1-y^{(i)})\log(1-h_\theta(x^{(i)}))] $$</div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Algorithm Workflow</h3>
                 <div class="workflow-container">
                     <div class="workflow-step">
-                                <span class="workflow-key">START</span>
-                                <span class="workflow-val">Initialize weight vector $\mathbf{w}$ and bias $b$ to zeros.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">EPOCH LOOP</span>
-                                <span class="workflow-val">Iterate for a fixed set of `epochs`.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">LINEAR</span>
-                                <span class="workflow-val">Compute linear response $z_i = \mathbf{w}^T \mathbf{x}_i + b$ for all samples.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">ACTIVATE</span>
-                                <span class="workflow-val">Apply Sigmoid function $p_i = \frac{1}{1 + e^{-z_i}}$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">ERROR</span>
-                                <span class="workflow-val">Compute prediction error $e_i = p_i - y_i$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">GRADIENT</span>
-                                <span class="workflow-val">Calculate $\nabla w = X^T (\hat{y} - y)$ accumulating over all samples.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">UPDATE</span>
-                                <span class="workflow-val">Apply update rule $\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla w$ (where $\eta$ is learning rate).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">CONVERGE</span>
-                                <span class="workflow-val">Repeat until max epochs.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">PREDICT</span>
-                                <span class="workflow-val">Return 1 if $p_i > 0.5$ else 0.</span>
-                            </div>
+                        <span class="workflow-key">START</span>
+                        <span class="workflow-val">Initialize weight vector $\mathbf{w}$ and bias $b$ to zeros.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">EPOCH LOOP</span>
+                        <span class="workflow-val">Iterate for a fixed set of `epochs`.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">LINEAR</span>
+                        <span class="workflow-val">Compute linear response $z_i = \mathbf{w}^T \mathbf{x}_i + b$ for all
+                            samples.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">ACTIVATE</span>
+                        <span class="workflow-val">Apply Sigmoid function $p_i = \frac{1}{1 + e^{-z_i}}$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">ERROR</span>
+                        <span class="workflow-val">Compute prediction error $e_i = p_i - y_i$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">GRADIENT</span>
+                        <span class="workflow-val">Calculate $\nabla w = X^T (\hat{y} - y)$ accumulating over all
+                            samples.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">UPDATE</span>
+                        <span class="workflow-val">Apply update rule $\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla w$
+                            (where $\eta$ is learning rate).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">CONVERGE</span>
+                        <span class="workflow-val">Repeat until max epochs.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">PREDICT</span>
+                        <span class="workflow-val">Return 1 if $p_i > 0.5$ else 0.</span>
+                    </div>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Implementation Details</h3>
                 <div class="glass-panel" style="padding: 2rem;">
                     <p style="color: var(--text-secondary);">Implemented in `LogisticRegression.cpp`.</p>
                 </div>
-                
+
                 <div class="glass-panel" style="margin-top: 1.5rem; padding: 0; overflow: hidden;">
                     <pre><code class="language-cpp" style="font-size: 0.85rem;">for(int e=0; e&lt;epochs; e++){
     double z = dot_product(row, coef) + intercept;
@@ -118,7 +143,7 @@
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.3s; margin-top: 3rem;">
                 <h3>Complexity & Optimization</h3>
                 <div class="grid-2">
@@ -141,9 +166,9 @@
                 </div>
             </section>
 
-             <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
+            <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
                 <h3>Use Cases</h3>
-                 <p style="color: var(--text-secondary);">Binary classification.</p>
+                <p style="color: var(--text-secondary);">Binary classification.</p>
             </section>
 
         </main>
@@ -152,4 +177,5 @@
     <div id="footer"></div>
     <script type="module" src="/assets/js/main.js"></script>
 </body>
+
 </html>

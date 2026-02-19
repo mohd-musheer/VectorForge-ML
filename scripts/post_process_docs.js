@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DOCS_ROOT = path.join(__dirname, '..', 'docs');
-const BASE_URL = 'https://vectorforgeml.com';
+const BASE_URL = 'https://vectorforgeml.work.gd';
 
 function getRecFiles(dir) {
     let results = [];

@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linear Regression - VectorForgeML Documentation</title>
-    <meta name="description" content="A fundamental statistical method that models the relationship between a scalar response and one or more explanatory variables using a linear predictor functions...">
-    <meta name="keywords" content="Linear Regression, LinearRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
-    <link rel="canonical" href="https://vectorforgeml.com/docs/LinearRegression.html">
-    
+    <meta name="description"
+        content="A fundamental statistical method that models the relationship between a scalar response and one or more explanatory variables using a linear predictor functions...">
+    <meta name="keywords"
+        content="Linear Regression, LinearRegression, R Machine Learning, C++ Implementation, VectorForgeML, Data Science, Algorithm">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/LinearRegression.html">
+
     <!-- Open Graph -->
     <meta property="og:title" content="Linear Regression - High Performance Implementation">
-    <meta property="og:description" content="A fundamental statistical method that models the relationship between a scalar response and one or more explanatory variables using a linear predictor functions. This implementation solves the Ordinar...">
+    <meta property="og:description"
+        content="A fundamental statistical method that models the relationship between a scalar response and one or more explanatory variables using a linear predictor functions. This implementation solves the Ordinar...">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://vectorforgeml.com/docs/LinearRegression.html">
-    <meta property="og:image" content="https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/LinearRegression.html">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
 
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -41,12 +46,13 @@
         "name": "VectorForgeML",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://vectorforgeml.com/assets/images/VectorForgeML_Logo.png"
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
         }
       }
     }
     </script>
 </head>
+
 <body class="docs-layout">
     <div id="navbar"></div>
     <div id="sidebar"></div>
@@ -54,69 +60,95 @@
     <div class="layout-container">
         <main class="main-content">
             <div style="margin-bottom: 2rem;">
-                <span style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
+                <span
+                    style="font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px;">Algorithm</span>
                 <h1 class="fade-in" style="margin-top: 0.5rem;">Linear Regression</h1>
             </div>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-bottom: 2rem;">
                 <h3>Description</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
-                    A fundamental statistical method that models the relationship between a scalar response and one or more explanatory variables using a linear predictor functions. This implementation solves the Ordinary Least Squares (OLS) problem using the Normal Equation approach. It is heavily optimized using BLAS (Basic Linear Algebra Subprograms) and LAPACK (Linear Algebra PACKage) for native hardware acceleration, making it suitable for high-performance computing tasks.
+                    A fundamental statistical method that models the relationship between a scalar response and one or
+                    more explanatory variables using a linear predictor functions. This implementation solves the
+                    Ordinary Least Squares (OLS) problem using the Normal Equation approach. It is heavily optimized
+                    using BLAS (Basic Linear Algebra Subprograms) and LAPACK (Linear Algebra PACKage) for native
+                    hardware acceleration, making it suitable for high-performance computing tasks.
                 </p>
-                <div class="glass-panel" style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">$$ \hat{\beta} = (X^T X)^{-1} X^T y $$</div>
+                <div class="glass-panel"
+                    style="padding:1rem; margin:1rem 0; font-family:'Times New Roman', serif; font-size:1.1rem; text-align:center;">
+                    $$ \hat{\beta} = (X^T X)^{-1} X^T y $$</div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.1s; margin-top: 3rem;">
                 <h3>Algorithm Workflow</h3>
                 <div class="workflow-container">
                     <div class="workflow-step">
-                                <span class="workflow-key">STARTINPUT</span>
-                                <span class="workflow-val">Matrix $X$ (Features) and Vector $y$ (Targets).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">VALIDATE</span>
-                                <span class="workflow-val">Check for row/column consistency and dimensions.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">PARALLEL MEAN</span>
-                                <span class="workflow-val">Compute $\bar{x}$ for each column via OpenMP SIMD reduction.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">GRAM MATRIX</span>
-                                <span class="workflow-val">Calculate $X^TX$ using vectorized BLAS `dgemm` (Matrix-Matrix Mutliplication).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">TARGET PROJECTION</span>
-                                <span class="workflow-val">Calculate $X^Ty$ using BLAS `dgemv` (Matrix-Vector Multiplication).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">CENTERING</span>
-                                <span class="workflow-val">Adjust $X^TX$ and $X^Ty$ using $\bar{x}$ to effectively center the data.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">STABILIZE</span>
-                                <span class="workflow-val">Add a small $10^{-8}$ Ridge penalty to the diagonal for numerical stability.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">SOLVE</span>
-                                <span class="workflow-val">Apply LAPACK `dposv` (Cholesky Decomposition) to solve $A\beta = b$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">RECOVERY</span>
-                                <span class="workflow-val">If Cholesky fails (singular matrix), trigger Custom Fallback Solver (LU/QR).</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">INTERCEPT</span>
-                                <span class="workflow-val">Compute $\beta_0 = \bar{y} - \sum (\beta_j \cdot \bar{x}_j)$ derived from means.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">OUTPUT</span>
-                                <span class="workflow-val">Store coefficients $\beta$ and intercept $\beta_0$.</span>
-                            </div><div class="workflow-step">
-                                <span class="workflow-key">PREDICT</span>
-                                <span class="workflow-val">Compute standard dot product $X_{new} \cdot \beta + \beta_0$.</span>
-                            </div>
+                        <span class="workflow-key">STARTINPUT</span>
+                        <span class="workflow-val">Matrix $X$ (Features) and Vector $y$ (Targets).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">VALIDATE</span>
+                        <span class="workflow-val">Check for row/column consistency and dimensions.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">PARALLEL MEAN</span>
+                        <span class="workflow-val">Compute $\bar{x}$ for each column via OpenMP SIMD reduction.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">GRAM MATRIX</span>
+                        <span class="workflow-val">Calculate $X^TX$ using vectorized BLAS `dgemm` (Matrix-Matrix
+                            Mutliplication).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">TARGET PROJECTION</span>
+                        <span class="workflow-val">Calculate $X^Ty$ using BLAS `dgemv` (Matrix-Vector
+                            Multiplication).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">CENTERING</span>
+                        <span class="workflow-val">Adjust $X^TX$ and $X^Ty$ using $\bar{x}$ to effectively center the
+                            data.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">STABILIZE</span>
+                        <span class="workflow-val">Add a small $10^{-8}$ Ridge penalty to the diagonal for numerical
+                            stability.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">SOLVE</span>
+                        <span class="workflow-val">Apply LAPACK `dposv` (Cholesky Decomposition) to solve $A\beta =
+                            b$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">RECOVERY</span>
+                        <span class="workflow-val">If Cholesky fails (singular matrix), trigger Custom Fallback Solver
+                            (LU/QR).</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">INTERCEPT</span>
+                        <span class="workflow-val">Compute $\beta_0 = \bar{y} - \sum (\beta_j \cdot \bar{x}_j)$ derived
+                            from means.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">OUTPUT</span>
+                        <span class="workflow-val">Store coefficients $\beta$ and intercept $\beta_0$.</span>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="workflow-key">PREDICT</span>
+                        <span class="workflow-val">Compute standard dot product $X_{new} \cdot \beta + \beta_0$.</span>
+                    </div>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
                 <h3>Implementation Details</h3>
                 <div class="glass-panel" style="padding: 2rem;">
-                    <p style="color: var(--text-secondary);">Implemented in `LinearRegression.cpp` using BLAS/LAPACK.</p>
+                    <p style="color: var(--text-secondary);">Implemented in `LinearRegression.cpp` using BLAS/LAPACK.
+                    </p>
                 </div>
-                
+
                 <div class="glass-panel" style="margin-top: 1.5rem; padding: 0; overflow: hidden;">
                     <pre><code class="language-cpp" style="font-size: 0.85rem;">// Compute XtX and Xty using BLAS dgemm/dgemv
 F77_CALL(dgemm)("T", "N", &p, &p, &n, &one, x, &n, x, ...);
@@ -125,7 +157,7 @@ F77_CALL(dposv)("L", &n, &one, XtX, &lda, Xty, ...);</code></pre>
                 </div>
             </section>
 
-            
+
             <section class="slide-up" style="animation-delay: 0.3s; margin-top: 3rem;">
                 <h3>Complexity & Optimization</h3>
                 <div class="grid-2">
@@ -148,9 +180,9 @@ F77_CALL(dposv)("L", &n, &one, XtX, &lda, Xty, ...);</code></pre>
                 </div>
             </section>
 
-             <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
+            <section class="slide-up" style="animation-delay: 0.4s; margin-top: 3rem;">
                 <h3>Use Cases</h3>
-                 <p style="color: var(--text-secondary);">Baseline regression.</p>
+                <p style="color: var(--text-secondary);">Baseline regression.</p>
             </section>
 
         </main>
@@ -159,4 +191,5 @@ F77_CALL(dposv)("L", &n, &one, XtX, &lda, Xty, ...);</code></pre>
     <div id="footer"></div>
     <script type="module" src="/assets/js/main.js"></script>
 </body>
+
 </html>

@@ -1,227 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vectorforgeml.com/community/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/community/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/developer/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/developer/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/accuracy_score.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/accuracy_score.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/ColumnTransformer.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/ColumnTransformer.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/confusion_matrix.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/confusion_matrix.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/confusion_stats.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/confusion_stats.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/cpp_set_blas_threads.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/cpp_set_blas_threads.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/cpp_sum_squares.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/cpp_sum_squares.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/DecisionTree.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/DecisionTree.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/dot_product.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/dot_product.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/drop_constant_columns.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/drop_constant_columns.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/f1_score.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/f1_score.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/find_best_k.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/find_best_k.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/fit_linear_model.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/fit_linear_model.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/KMeans.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/KMeans.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/KNN.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/KNN.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/LabelEncoder.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/LabelEncoder.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/LinearRegression.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/LinearRegression.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/LogisticRegression.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/LogisticRegression.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/macro_f1.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/macro_f1.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/macro_precision.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/macro_precision.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/macro_recall.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/macro_recall.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/matrix_ops.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/matrix_ops.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/MinMaxScaler.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/MinMaxScaler.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/mse.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/mse.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/OneHotEncoder.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/OneHotEncoder.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/PCA.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/PCA.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/Pipeline.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/Pipeline.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/plot_confusion_matrix.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/plot_confusion_matrix.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/precision_score.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/precision_score.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/predict_linear_model.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/predict_linear_model.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/r2_score.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/r2_score.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/RandomForest.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/RandomForest.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/recall_score.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/recall_score.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/RidgeRegression.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/RidgeRegression.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/rmse.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/rmse.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/SoftmaxRegression.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/SoftmaxRegression.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/square_vec.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/square_vec.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/StandardScaler.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/StandardScaler.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/docs/train_test_split.html</loc>
+    <loc>https://vectorforgeml.work.gd/docs/train_test_split.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/install/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/install/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/license.html</loc>
+    <loc>https://vectorforgeml.work.gd/license.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vectorforgeml.com/playground/index.html</loc>
+    <loc>https://vectorforgeml.work.gd/playground/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
