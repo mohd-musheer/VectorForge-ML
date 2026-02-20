@@ -22,7 +22,8 @@
 * used C++ compiler: 'G__~1.EXE (GCC) 13.3.0'
 * checking installed package size ... OK
 * checking package directory ... OK
-* checking DESCRIPTION meta-information ... OK
+* checking DESCRIPTION meta-information ... NOTE
+License stub is invalid DCF.
 * checking top-level files ... OK
 * checking for left-over files ... OK
 * checking index information ... OK
@@ -58,4 +59,4 @@
 * checking compiled code ... OK
 * checking examples ... OK
 * DONE
-Status: OK
+Status: 1 NOTE

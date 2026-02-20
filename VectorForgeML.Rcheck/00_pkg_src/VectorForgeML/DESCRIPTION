@@ -3,17 +3,21 @@ Type: Package
 Title: High-Performance Machine Learning Framework with C++
         Acceleration
 Version: 0.1.0
-Author: Musheer
-Maintainer: Musheer <musheerayan@gmail.com>
-Description: VectorForgeML provides high-performance machine learning algorithms implemented in C++ with an R interface. The package includes regression, classification, clustering, preprocessing utilities, evaluation metrics, and pipeline tools designed for efficient model training and prediction.
+Authors@R: 
+    person(given = "Musheer",
+           family = "Ayan",
+           role = c("aut", "cre"),
+           email = "musheerayan@gmail.com")
+Description: Provides high-performance machine learning algorithms implemented in C++ with an R interface. Includes regression, classification, clustering, preprocessing utilities, evaluation metrics, and pipeline tools designed for efficient model training and prediction.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 Imports: methods, Rcpp
 LinkingTo: Rcpp
 SystemRequirements: OpenMP (optional)
-RoxygenNote: 7.3.3
 URL: https://vectorforgeml.work.gd
 BugReports: https://github.com/mohd-musheer/VectorForgeML/issues
 NeedsCompilation: yes
-Packaged: 2026-02-18 18:06:52 UTC; mushe
+Packaged: 2026-02-20 10:34:54 UTC; mushe
+Author: Musheer Ayan [aut, cre]
+Maintainer: Musheer Ayan <musheerayan@gmail.com>
