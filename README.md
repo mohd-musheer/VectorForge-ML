@@ -41,6 +41,8 @@ install.packages("remotes")
 
 # Install VectorForgeML
 remotes::install_github("mohd-musheer/VectorForgeML")
+
+library(VectorForgeML)
 ```
 
 ---
