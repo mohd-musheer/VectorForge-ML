@@ -129,9 +129,8 @@ void ridge_fit(SEXP ptr,
     meanX[j]=s/n;
   }
 
-  double dot=0;
-  for(int j=0;j<p;j++)
-    dot+=m->coef[j]*meanX[j];
+  int inc_dot = 1;
+  double dot = F77_CALL(ddot)(&p, m->coef.data(), &inc_dot, meanX.data(), &inc_dot);
 
   m->intercept = meanY - dot;
 }

@@ -45,21 +45,25 @@ void pca_fit(SEXP ptr, NumericMatrix X){
 
   // ===== covariance matrix =====
   vector<double> C(p*p,0.0);
+  vector<double> Xc(n*p);
+  
+  for(int j=0;j<p;j++){
+    for(int i=0;i<n;i++){
+      Xc[j*n + i] = x[j*n + i] - m->mean[j];
+    }
+  }
 
+  const char* uplo_syrk = "U";
+  const char* trans_syrk = "T";
+  double alpha = 1.0 / (n - 1);
+  double beta = 0.0;
+
+  F77_CALL(dsyrk)(uplo_syrk, trans_syrk, &p, &n, &alpha, Xc.data(), &n, &beta, C.data(), &p FCONE FCONE);
+
+  // fill lower triangle
   for(int i=0;i<p;i++){
-    for(int j=i;j<p;j++){
-
-      double s=0;
-
-      for(int k=0;k<n;k++){
-        double xi = x[i*n + k] - m->mean[i];
-        double xj = x[j*n + k] - m->mean[j];
-        s += xi * xj;
-      }
-
-      double v = s/(n-1);
-      C[i*p + j] = v;
-      C[j*p + i] = v;
+    for(int j=i+1;j<p;j++){
+      C[j*p + i] = C[i*p + j];
     }
   }
 
@@ -122,18 +126,18 @@ NumericMatrix pca_transform(SEXP ptr, NumericMatrix X){
   const double* x = X.begin();
   double* o = out.begin();
 
-  for(int i=0;i<n;i++){
-    for(int c=0;c<k;c++){
-
-      double s=0;
-      const double* comp = &m->components[c*p];
-
-      for(int j=0;j<p;j++)
-        s += (x[j*n + i] - m->mean[j]) * comp[j];
-
-      o[c*n + i] = s;
+  vector<double> Xc(n*p);
+  for(int j=0;j<p;j++){
+    for(int i=0;i<n;i++){
+      Xc[j*n + i] = x[j*n + i] - m->mean[j];
     }
   }
+
+  const char* transN = "N";
+  double alpha = 1.0;
+  double beta = 0.0;
+
+  F77_CALL(dgemm)(transN, transN, &n, &k, &p, &alpha, Xc.data(), &n, m->components.data(), &p, &beta, o, &n FCONE FCONE);
 
   return out;
 }

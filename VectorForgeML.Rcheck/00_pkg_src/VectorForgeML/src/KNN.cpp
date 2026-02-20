@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <R_ext/BLAS.h>
 
 using namespace Rcpp;
 using std::vector;
@@ -60,19 +61,42 @@ NumericVector knn_predict(SEXP ptr, NumericMatrix X){
 
   NumericVector out(ntest);
 
+  const double* train = m->X.data();
+  const double* yy = m->y.data();
+  const double* test = X.begin();
+
+  vector<double> Xtest_sq(ntest, 0.0);
+  for(int j=0;j<p;j++){
+    for(int i=0;i<ntest;i++){
+      double v = test[j*ntest + i];
+      Xtest_sq[i] += v*v;
+    }
+  }
+
+  vector<double> Xtrain_sq(m->n, 0.0);
+  for(int j=0;j<p;j++){
+    for(int t=0;t<m->n;t++){
+      double v = train[j*m->n + t];
+      Xtrain_sq[t] += v*v;
+    }
+  }
+
+  vector<double> Dcross(ntest * m->n);
+  const char* transN = "N";
+  const char* transT = "T";
+  double alpha = -2.0;
+  double beta = 0.0;
+
+  F77_CALL(dgemm)(transN, transT, &ntest, &m->n, &p, &alpha, test, &ntest, train, &m->n, &beta, Dcross.data(), &ntest FCONE FCONE);
+
   vector<double> dists(m->n);
   vector<int> idx(m->n);
 
-  const double* train = m->X.data();
-  const double* yy = m->y.data();
-
   for(int i=0;i<ntest;i++){
-
-    const double* test = X.begin() + i*p;
 
     // compute distances
     for(int t=0;t<m->n;t++){
-      dists[t] = dist2(test, train + t*p, p);
+      dists[t] = Xtest_sq[i] + Xtrain_sq[t] + Dcross[i + t*ntest];
       idx[t] = t;
     }
 

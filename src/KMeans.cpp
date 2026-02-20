@@ -3,6 +3,7 @@
 #include <cmath>
 #include <limits>
 #include <random>
+#include <R_ext/BLAS.h>
 
 using namespace Rcpp;
 using std::vector;
@@ -54,28 +55,45 @@ void kmeans_fit(SEXP ptr, NumericMatrix X, int max_iter=100){
       m->centroids[c*p+j]=x[j*n+r];
   }
 
-  vector<int> labels(n);
+  vector<double> labels(n, -1);
 
   for(int it=0; it<max_iter; it++){
+
+    vector<double> Xsq(n, 0.0);
+    for(int j=0;j<p;j++){
+      for(int i=0;i<n;i++){
+        double v = x[j*n + i];
+        Xsq[i] += v * v;
+      }
+    }
+
+    vector<double> Csq(k, 0.0);
+    for(int c=0;c<k;c++){
+      double s = 0;
+      for(int j=0;j<p;j++){
+        double v = m->centroids[c*p + j];
+        s += v * v;
+      }
+      Csq[c] = s;
+    }
+
+    vector<double> Dcross(n * k);
+    const char* transN = "N";
+    double alpha = -2.0;
+    double beta = 0.0;
+    
+    F77_CALL(dgemm)(transN, transN, &n, &k, &p, &alpha, x, &n, m->centroids.data(), &p, &beta, Dcross.data(), &n FCONE FCONE);
 
     bool changed=false;
 
     // assign step
     for(int i=0;i<n;i++){
 
-
       double best=std::numeric_limits<double>::max();
       int bestk=0;
 
       for(int c=0;c<k;c++){
-        double d=0;
-        const double* cent=&m->centroids[c*p];
-
-        for(int j=0;j<p;j++){
-          double diff=x[j*n+i]-cent[j];
-          d+=diff*diff;
-        }
-
+        double d = Xsq[i] + Csq[c] + Dcross[i + c*n];
         if(d<best){
           best=d;
           bestk=c;
@@ -122,20 +140,38 @@ IntegerVector kmeans_predict(SEXP ptr, NumericMatrix X){
 
   IntegerVector out(n);
 
+  vector<double> Xsq(n, 0.0);
+  for(int j=0;j<p;j++){
+    for(int i=0;i<n;i++){
+      double v = x[j*n + i];
+      Xsq[i] += v * v;
+    }
+  }
+
+  vector<double> Csq(k, 0.0);
+  for(int c=0;c<k;c++){
+    double s = 0;
+    for(int j=0;j<p;j++){
+      double v = m->centroids[c*p + j];
+      s += v * v;
+    }
+    Csq[c] = s;
+  }
+
+  vector<double> Dcross(n * k);
+  const char* transN = "N";
+  double alpha = -2.0;
+  double beta = 0.0;
+
+  F77_CALL(dgemm)(transN, transN, &n, &k, &p, &alpha, x, &n, m->centroids.data(), &p, &beta, Dcross.data(), &n FCONE FCONE);
+
   for(int i=0;i<n;i++){
 
     double best=1e100;
     int bestk=0;
 
     for(int c=0;c<k;c++){
-      double d=0;
-      const double* cent=&m->centroids[c*p];
-
-      for(int j=0;j<p;j++){
-        double diff=x[j*n+i]-cent[j];
-        d+=diff*diff;
-      }
-
+      double d = Xsq[i] + Csq[c] + Dcross[i + c*n];
       if(d<best){
         best=d;
         bestk=c;

@@ -1,9 +1,0 @@
-citHeader("To cite VectorForgeML:")
-
-citEntry(
-  entry = "Manual",
-  title = "VectorForgeML: High Performance Machine Learning Framework",
-  author = "Mohd Musheer",
-  year = "2026",
-  note = "R package version 0.1.0"
-)

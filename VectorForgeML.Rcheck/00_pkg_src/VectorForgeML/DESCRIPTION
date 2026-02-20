@@ -18,6 +18,6 @@ SystemRequirements: OpenMP (optional)
 URL: https://vectorforgeml.work.gd
 BugReports: https://github.com/mohd-musheer/VectorForgeML/issues
 NeedsCompilation: yes
-Packaged: 2026-02-20 10:34:54 UTC; mushe
+Packaged: 2026-02-20 11:34:29 UTC; mushe
 Author: Musheer Ayan [aut, cre]
 Maintainer: Musheer Ayan <musheerayan@gmail.com>
