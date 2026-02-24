@@ -19,6 +19,12 @@ Unlike traditional R packages that simply wrap C libraries, **VectorForgeML** im
 
 The goal is to provide a **Research-Ready Engine** that allows data scientists to build complex pipelines in milliseconds.
 
+## Research Paper
+
+The official research paper describing VectorForgeML is available here:
+
+[VectorForgeML Paper](paper/VectorForgeML_Paper.pdf)
+
 ---
 
 ## ⚡ Key Features
