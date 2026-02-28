@@ -4,10 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation - VectorForgeML</title>
+
+    <!-- Primary SEO Meta -->
+    <title>VectorForgeML Documentation - API Reference, Guides & 30+ Algorithm Docs</title>
+    <meta name="description"
+        content="Complete VectorForgeML documentation: API reference for 30+ machine learning algorithms, quick start guides, code examples for Random Forest, PCA, K-Means, Linear Regression, Pipeline, and more. C++ powered ML for R.">
+    <meta name="keywords"
+        content="VectorForgeML documentation, VectorForgeML API reference, VectorForgeML tutorial, VectorForgeML algorithms, VectorForgeML guide, R machine learning documentation, C++ ML framework docs">
+    <meta name="author" content="Mohd Musheer">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/docs/">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VectorForgeML">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/docs/">
+    <meta property="og:title" content="VectorForgeML Documentation - Complete API Reference & Guides">
+    <meta property="og:description"
+        content="Explore 30+ ML algorithm docs, quick start guides, and code examples for VectorForgeML — the high-performance R + C++ machine learning framework.">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VectorForgeML Documentation - API Reference & Guides">
+    <meta name="twitter:description"
+        content="Complete documentation for VectorForgeML: 30+ ML algorithm references, quick start, Pipeline examples, and more.">
+    <meta name="twitter:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+
+    <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap"
         rel="stylesheet">
+
+    <!-- JSON-LD: TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "VectorForgeML Documentation - Complete API Reference",
+      "description": "Complete documentation for VectorForgeML machine learning framework: API reference for 30+ algorithms, quick start guides, and code examples for R and C++.",
+      "author": {
+        "@type": "Person",
+        "name": "Mohd Musheer",
+        "url": "https://vectorforgeml.work.gd/developer/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VectorForgeML",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
+        }
+      },
+      "mainEntityOfPage": "https://vectorforgeml.work.gd/docs/",
+      "proficiencyLevel": "Beginner",
+      "programmingLanguage": ["R", "C++"]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vectorforgeml.work.gd/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Documentation",
+          "item": "https://vectorforgeml.work.gd/docs/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: ItemList (Algorithm catalog for rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "VectorForgeML Machine Learning Algorithms",
+      "description": "Complete list of ML algorithms available in VectorForgeML",
+      "numberOfItems": 32,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Random Forest", "url": "https://vectorforgeml.work.gd/docs/RandomForest.html"},
+        {"@type": "ListItem", "position": 2, "name": "Decision Tree", "url": "https://vectorforgeml.work.gd/docs/DecisionTree.html"},
+        {"@type": "ListItem", "position": 3, "name": "Linear Regression", "url": "https://vectorforgeml.work.gd/docs/LinearRegression.html"},
+        {"@type": "ListItem", "position": 4, "name": "Logistic Regression", "url": "https://vectorforgeml.work.gd/docs/LogisticRegression.html"},
+        {"@type": "ListItem", "position": 5, "name": "K-Means", "url": "https://vectorforgeml.work.gd/docs/KMeans.html"},
+        {"@type": "ListItem", "position": 6, "name": "KNN", "url": "https://vectorforgeml.work.gd/docs/KNN.html"},
+        {"@type": "ListItem", "position": 7, "name": "PCA", "url": "https://vectorforgeml.work.gd/docs/PCA.html"},
+        {"@type": "ListItem", "position": 8, "name": "Pipeline", "url": "https://vectorforgeml.work.gd/docs/Pipeline.html"},
+        {"@type": "ListItem", "position": 9, "name": "Ridge Regression", "url": "https://vectorforgeml.work.gd/docs/RidgeRegression.html"},
+        {"@type": "ListItem", "position": 10, "name": "Softmax Regression", "url": "https://vectorforgeml.work.gd/docs/SoftmaxRegression.html"}
+      ]
+    }
+    </script>
 </head>
 
 <body class="docs-layout">
@@ -16,15 +116,17 @@
 
     <div class="layout-container">
         <main class="main-content">
-            <h1 class="fade-in">Documentation</h1>
+            <h1 class="fade-in">VectorForgeML Documentation</h1>
             <p class="fade-in" style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem;">
-                Usage guides, API references, and examples for VectorForgeML.
+                Usage guides, API references, and examples for the <strong>VectorForgeML</strong> machine learning framework.
+                Built on <strong>C++</strong> for maximum performance in <strong>R</strong>.
             </p>
 
             <section class="slide-up">
-                <h2>Quick Start</h2>
+                <h2>Quick Start Guide</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Get up and running with a simple classification <a href="/docs/Pipeline.html" style="color: var(--accent-primary); text-decoration: none;">pipeline</a> in VectorForgeML.</p>
                 <div class="glass-panel" style="padding: 2rem; margin-top: 1rem;">
-                    <p>Get up and running with a simple classification pipeline.</p>
+                    <p>First, <a href="/install/" style="color: var(--accent-primary); text-decoration: none;">install VectorForgeML</a>, then build your first pipeline:</p>
                     <pre><code class="language-r">library(VectorForgeML)
 
 # Load data
@@ -44,34 +146,134 @@ pipe$fit(iris[, 1:4], iris[, 5])
 
             <section class="slide-up" style="margin-top: 4rem; animation-delay: 0.1s;">
                 <h2>API Reference</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Explore the available modules and
-                    algorithms.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Explore the available modules and algorithms in VectorForgeML.</p>
 
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Models</h3>
                 <div class="grid-3" id="algo-grid">
-                    <!-- Injected by JS or Static Listing -->
-                    <!-- We will auto-generate links here for now as a fallback -->
                     <a href="/docs/RandomForest.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
                         <h4>Random Forest</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Ensemble Learning</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Ensemble Learning — Classification & Regression</span>
+                    </a>
+                    <a href="/docs/DecisionTree.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>Decision Tree</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Tree-based — Classification & Regression</span>
                     </a>
                     <a href="/docs/LinearRegression.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
                         <h4>Linear Regression</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Regression</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Regression — BLAS Accelerated</span>
+                    </a>
+                    <a href="/docs/LogisticRegression.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>Logistic Regression</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Classification — Binary & Multi-class</span>
                     </a>
                     <a href="/docs/KMeans.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
                         <h4>K-Means</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Clustering</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Clustering — Unsupervised</span>
+                    </a>
+                    <a href="/docs/KNN.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>KNN</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Instance-based — Nearest Neighbors</span>
                     </a>
                     <a href="/docs/PCA.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
                         <h4>PCA</h4>
                         <span style="font-size: 0.8rem; color: var(--text-secondary);">Dimensionality Reduction</span>
                     </a>
+                    <a href="/docs/RidgeRegression.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>Ridge Regression</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Regularized Regression — L2</span>
+                    </a>
+                    <a href="/docs/SoftmaxRegression.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>Softmax Regression</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Multi-class Classification</span>
+                    </a>
                 </div>
-                <!-- Full list will be in Sidebar -->
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Preprocessing</h3>
+                <div class="grid-3">
+                    <a href="/docs/StandardScaler.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>StandardScaler</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Feature Scaling — Zero Mean, Unit Variance</span>
+                    </a>
+                    <a href="/docs/MinMaxScaler.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>MinMaxScaler</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Feature Scaling — Range Normalization</span>
+                    </a>
+                    <a href="/docs/Pipeline.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>Pipeline</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">End-to-End ML Workflow</span>
+                    </a>
+                    <a href="/docs/LabelEncoder.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>LabelEncoder</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Categorical Encoding</span>
+                    </a>
+                    <a href="/docs/OneHotEncoder.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>OneHotEncoder</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Binary Feature Expansion</span>
+                    </a>
+                    <a href="/docs/ColumnTransformer.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>ColumnTransformer</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Column-wise Transformations</span>
+                    </a>
+                    <a href="/docs/train_test_split.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>train_test_split</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Data Splitting Utility</span>
+                    </a>
+                    <a href="/docs/drop_constant_columns.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>drop_constant_columns</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Feature Selection</span>
+                    </a>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Evaluation Metrics</h3>
+                <div class="grid-3">
+                    <a href="/docs/accuracy_score.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>accuracy_score</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Classification Accuracy</span>
+                    </a>
+                    <a href="/docs/f1_score.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>f1_score</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Harmonic Mean of Precision & Recall</span>
+                    </a>
+                    <a href="/docs/confusion_matrix.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>confusion_matrix</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Classification Error Analysis</span>
+                    </a>
+                    <a href="/docs/r2_score.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>r2_score</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Coefficient of Determination</span>
+                    </a>
+                    <a href="/docs/mse.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>mse / rmse</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Regression Error Metrics</span>
+                    </a>
+                    <a href="/docs/precision_score.html" class="glass-panel"
+                        style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h4>precision_score / recall_score</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Classification Precision & Recall</span>
+                    </a>
+                </div>
             </section>
         </main>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 
 <head>
     <meta name="google-site-verification" content="QDHSJbBAdzIkWQLw6yAtoxZEenE6ORsdG3zPeMp32uM" />
@@ -7,54 +7,206 @@
     <meta name="yandex-verification" content="1c2f59332c343969" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO Meta -->
+    <title>VectorForgeML - High-Performance C++ Machine Learning Framework for R | 30+ Algorithms</title>
     <meta name="description"
-        content="VectorForgeML is a high-performance, blazing fast machine learning framework for R, powered by an optimized C++ backend. Build, train, and deploy models in milliseconds.">
+        content="VectorForgeML is a blazing-fast machine learning framework for R powered by an optimized C++ backend. Train models in milliseconds with 30+ algorithms including Random Forest, PCA, K-Means, and Pipeline support. Created by Mohd Musheer.">
     <meta name="keywords"
-        content="VectorForgeML, R Machine Learning, C++ ML Framework, Fast R Library, Data Science, Linear Regression, Random Forest, High Performance Computing, BLAS, LAPACK, AI for R">
+        content="VectorForgeML, VectorForge ML, VectorForgeML framework, VectorForgeML documentation, VectorForgeML C++ library, VectorForgeML R integration, VectorForgeML machine learning framework, Mohd Musheer VectorForgeML, R Machine Learning, C++ ML Framework, Fast R Library, Data Science, Linear Regression, Random Forest, High Performance Computing, BLAS, LAPACK, AI for R, machine learning R package, R C++ integration, Rcpp machine learning">
     <meta name="author" content="Mohd Musheer">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://vectorforgeml.work.gd/">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="application-name" content="VectorForgeML">
+    <meta name="creator" content="Mohd Musheer">
+    <meta name="publisher" content="VectorForgeML">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VectorForgeML">
     <meta property="og:url" content="https://vectorforgeml.work.gd/">
-    <meta property="og:title" content="VectorForgeML - The Fastest R + C++ ML Framework">
+    <meta property="og:title" content="VectorForgeML - Blazing Fast C++ Machine Learning Framework for R">
     <meta property="og:description"
-        content="Integrate C++ speed with R simplicity. VectorForgeML delivers state-of-the-art performance for your machine learning workflows.">
+        content="Train ML models in milliseconds. VectorForgeML integrates C++ speed with R simplicity — 30+ algorithms, zero-copy data exchange, native Pipeline support. Open source by Mohd Musheer.">
     <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+    <meta property="og:image:alt" content="VectorForgeML Logo - High-Performance Machine Learning Framework">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:locale" content="en_US">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://vectorforgeml.work.gd/">
-    <meta property="twitter:title" content="VectorForgeML - Blazing Fast ML for R">
-    <meta property="twitter:description"
-        content="Accelerate your R data science projects with VectorForgeML's optimized C++ engine.">
-    <meta property="twitter:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://vectorforgeml.work.gd/">
+    <meta name="twitter:title" content="VectorForgeML - High-Performance C++ ML Framework for R">
+    <meta name="twitter:description"
+        content="Accelerate your R data science projects with VectorForgeML's optimized C++ engine. 30+ algorithms, Pipeline support, zero-copy data exchange.">
+    <meta name="twitter:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+    <meta name="twitter:image:alt" content="VectorForgeML Logo">
 
-    <title>VectorForgeML - High-Performance R Machine Learning Framework</title>
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
         rel="stylesheet">
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD: WebSite Schema (enables sitelinks search box) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebSite",
       "name": "VectorForgeML",
-      "operatingSystem": "Windows, Linux, macOS",
-      "applicationCategory": "DeveloperApplication",
+      "alternateName": ["VectorForge ML", "VectorForgeML Framework", "VectorForgeML Documentation"],
+      "url": "https://vectorforgeml.work.gd/",
+      "description": "High-performance machine learning framework for R powered by C++",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://vectorforgeml.work.gd/docs/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VectorForgeML",
+        "url": "https://vectorforgeml.work.gd/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Mohd Musheer",
+          "url": "https://vectorforgeml.work.gd/developer/"
+        }
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: SoftwareSourceCode Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "VectorForgeML",
+      "description": "A high-performance machine learning framework for R that integrates an optimized C++ backend for maximum speed and efficiency. Features 30+ algorithms including Random Forest, PCA, K-Means, Linear Regression, and Pipeline support.",
+      "codeRepository": "https://github.com/mohd-musheer/VectorForgeML",
+      "programmingLanguage": [
+        {"@type": "ComputerLanguage", "name": "R"},
+        {"@type": "ComputerLanguage", "name": "C++"}
+      ],
+      "runtimePlatform": "R >= 4.0.0",
+      "operatingSystem": ["Windows", "Linux", "macOS"],
+      "license": "https://opensource.org/licenses/MIT",
+      "author": {
+        "@type": "Person",
+        "name": "Mohd Musheer",
+        "url": "https://vectorforgeml.work.gd/developer/",
+        "sameAs": [
+          "https://github.com/mohd-musheer"
+        ]
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "A high-performance machine learning library that integrates R with an optimized C++ backend for maximum speed and efficiency.",
-      "author": {
-          "@type": "Person",
-          "name": "Mohd Musheer"
-      }
+      "applicationCategory": "Machine Learning Framework",
+      "applicationSubCategory": "Data Science"
+    }
+    </script>
+
+    <!-- JSON-LD: Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VectorForgeML",
+      "url": "https://vectorforgeml.work.gd/",
+      "logo": "https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png",
+      "description": "Open-source high-performance machine learning framework for R powered by C++",
+      "founder": {
+        "@type": "Person",
+        "name": "Mohd Musheer"
+      },
+      "sameAs": [
+        "https://github.com/mohd-musheer/VectorForgeML"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vectorforgeml.work.gd/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: FAQ Schema for Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VectorForgeML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VectorForgeML is a high-performance machine learning framework for R powered by an optimized C++ backend. It provides 30+ algorithms including Random Forest, PCA, K-Means, Linear Regression, and full Pipeline support, enabling you to train models in milliseconds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install VectorForgeML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can install VectorForgeML from GitHub using: install.packages('remotes'); remotes::install_github('mohd-musheer/VectorForgeML'). You need R >= 4.0.0 and a C++ compiler installed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What algorithms does VectorForgeML support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VectorForgeML supports 30+ algorithms across classification, regression, clustering, and dimensionality reduction: Random Forest, Decision Tree, Linear Regression, Logistic Regression, K-Means, KNN, PCA, Ridge Regression, Softmax Regression, plus preprocessing tools like StandardScaler, MinMaxScaler, LabelEncoder, OneHotEncoder, Pipeline, and comprehensive evaluation metrics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who created VectorForgeML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VectorForgeML was created by Mohd Musheer, a Full Stack Developer and ML Engineer. The project is open-source under the MIT License and hosted on GitHub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is VectorForgeML faster than other R ML libraries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VectorForgeML achieves superior performance through its optimized C++ backend that uses zero-copy data exchange with R, BLAS/LAPACK integration for linear algebra operations, and memory-efficient std::vector implementations. This eliminates the overhead of pure R implementations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is VectorForgeML free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, VectorForgeML is completely free and open-source, licensed under the MIT License. You can use it in personal and commercial projects without restrictions."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -66,52 +218,52 @@
     <div class="layout-container">
         <main class="main-content">
             <!-- Hero Section -->
-            <section style="text-align: center; padding: 6rem 0;">
+            <section style="text-align: center; padding: 6rem 0;" aria-label="Introduction to VectorForgeML">
                 <h1 class="fade-in">Supercharge your R workflows with <br><span
                         class="text-gradient">VectorForgeML</span></h1>
                 <p class="fade-in"
                     style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 1.5rem auto; animation-delay: 0.1s;">
-                    The high-performance Machine Learning framework bridging the gap between R's simplicity and C++'s
-                    speed.
+                    The high-performance <strong>Machine Learning framework</strong> bridging the gap between <strong>R's simplicity</strong> and <strong>C++'s
+                    speed</strong>. Created by <a href="/developer/" style="color: var(--accent-primary); text-decoration: none;">Mohd Musheer</a>.
                 </p>
                 <div class="fade-in" style="margin-top: 2.5rem; animation-delay: 0.2s;">
-                    <a href="/docs/index.html" class="btn-primary">Documentation</a>
-                    <a href="/install/index.html" class="btn-outline" style="margin-left: 1rem;">Installation</a>
+                    <a href="/docs/" class="btn-primary">Documentation</a>
+                    <a href="/install/" class="btn-outline" style="margin-left: 1rem;">Installation</a>
                 </div>
             </section>
 
-            <!-- Stats/Features Grid -->
-            <section class="grid-3 slide-up" style="margin-top: 4rem; animation-delay: 0.3s;">
+            <!-- Features Grid -->
+            <section class="grid-3 slide-up" style="margin-top: 4rem; animation-delay: 0.3s;" aria-label="Key Features of VectorForgeML">
                 <div class="glass-panel" style="padding: 2rem;">
-                    <h3 style="color: var(--accent-primary);">Blazing Fast</h3>
-                    <p style="color: var(--text-secondary);">Optimized C++ backend ensures your models train in record
-                        time.</p>
+                    <h2 style="color: var(--accent-primary); font-size: 1.25rem;">Blazing Fast C++ Backend</h2>
+                    <p style="color: var(--text-secondary);">Optimized C++ backend with BLAS/LAPACK integration ensures your models train in record
+                        time with zero-copy data exchange.</p>
                 </div>
                 <div class="glass-panel" style="padding: 2rem;">
-                    <h3 style="color: var(--accent-secondary);">Modular Design</h3>
-                    <p style="color: var(--text-secondary);">Pipeline-ready architecture compatible with modern R
-                        standards.</p>
+                    <h2 style="color: var(--accent-secondary); font-size: 1.25rem;">Modular Pipeline Design</h2>
+                    <p style="color: var(--text-secondary);">Pipeline-ready architecture with <a href="/docs/StandardScaler.html" style="color: var(--accent-secondary); text-decoration: none;">StandardScaler</a>, <a href="/docs/PCA.html" style="color: var(--accent-secondary); text-decoration: none;">PCA</a>, and more — compatible with modern R standards.</p>
                 </div>
                 <div class="glass-panel" style="padding: 2rem;">
-                    <h3 style="color: #10b981;">Easy API</h3>
-                    <p style="color: var(--text-secondary);">Familiar syntax for data scientists, with power under the
-                        hood.</p>
+                    <h2 style="color: #10b981; font-size: 1.25rem;">Easy R API</h2>
+                    <p style="color: var(--text-secondary);">Familiar syntax for data scientists with <a href="/docs/" style="color: #10b981; text-decoration: none;">30+ algorithms</a> — from <a href="/docs/RandomForest.html" style="color: #10b981; text-decoration: none;">Random Forest</a> to <a href="/docs/KMeans.html" style="color: #10b981; text-decoration: none;">K-Means clustering</a>.</p>
                 </div>
             </section>
 
             <!-- Code Preview -->
-            <section style="margin-top: 6rem;" class="slide-up">
+            <section style="margin-top: 6rem;" class="slide-up" aria-label="VectorForgeML Code Example">
                 <div class="grid-2">
                     <div>
-                        <h2>Simple yet Powerful</h2>
+                        <h2>Simple yet Powerful Machine Learning in R</h2>
                         <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                            Build complex pipelines with just a few lines of code. VectorForgeML handles the heavy
-                            lifting.
+                            Build complex <a href="/docs/Pipeline.html" style="color: var(--accent-primary); text-decoration: none;">ML pipelines</a> with just a few lines of code. VectorForgeML handles the heavy
+                            lifting with its C++ engine.
                         </p>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 1rem;">✅ 30+ Algorithms implemented</li>
-                            <li style="margin-bottom: 1rem;">✅ Zero-copy data exchange</li>
-                            <li style="margin-bottom: 1rem;">✅ Native Pipeline support</li>
+                            <li style="margin-bottom: 1rem;">&#10003; <strong>30+ Algorithms</strong> — classification, regression, clustering</li>
+                            <li style="margin-bottom: 1rem;">&#10003; <strong>Zero-copy data exchange</strong> between R and C++</li>
+                            <li style="margin-bottom: 1rem;">&#10003; Native <a href="/docs/Pipeline.html" style="color: var(--accent-primary); text-decoration: none;"><strong>Pipeline</strong></a> support for end-to-end workflows</li>
+                            <li style="margin-bottom: 1rem;">&#10003; <a href="/docs/accuracy_score.html" style="color: var(--accent-primary); text-decoration: none;"><strong>Comprehensive metrics</strong></a> — accuracy, F1, precision, recall, R², RMSE</li>
+                            <li style="margin-bottom: 1rem;">&#10003; <a href="/docs/StandardScaler.html" style="color: var(--accent-primary); text-decoration: none;"><strong>Preprocessing tools</strong></a> — scalers, encoders, transformers</li>
                         </ul>
                     </div>
                     <div class="glass-panel" style="padding: 0;">
@@ -135,30 +287,61 @@ preds <- pipe$predict(X_test)
             </section>
 
             <!-- Supported Algorithms Preview -->
-            <section style="margin-top: 6rem; text-align: center;">
-                <h2>Comprehensive Toolset</h2>
+            <section style="margin-top: 6rem; text-align: center;" aria-label="VectorForgeML Algorithm Library">
+                <h2>Comprehensive Machine Learning Toolset</h2>
+                <p style="color: var(--text-secondary); max-width: 700px; margin: 1rem auto;">VectorForgeML provides a complete suite of ML algorithms implemented in C++ for maximum performance in R.</p>
                 <div class="grid-3" style="margin-top: 3rem; text-align: left;">
                     <a href="/docs/RandomForest.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: transform 0.2s;">
-                        <h4>Random Forest</h4>
+                        <h3 style="font-size: 1.1rem;">Random Forest</h3>
                         <p style="font-size: 0.9rem; color: var(--text-secondary);">Ensemble learning method for
-                            classification and regression.</p>
+                            classification and regression with bootstrap aggregation.</p>
                     </a>
                     <a href="/docs/KMeans.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: transform 0.2s;">
-                        <h4>K-Means</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Fast clustering with optimized
-                            centroid initialization.</p>
+                        <h3 style="font-size: 1.1rem;">K-Means Clustering</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Fast unsupervised clustering with optimized
+                            centroid initialization in C++.</p>
                     </a>
                     <a href="/docs/LinearRegression.html" class="glass-panel"
                         style="padding: 1.5rem; text-decoration: none; color: inherit; display: block; transition: transform 0.2s;">
-                        <h4>Linear Regression</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Classic regression tailored for
-                            high-dimensional data.</p>
+                        <h3 style="font-size: 1.1rem;">Linear Regression</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">High-performance regression with BLAS-accelerated linear algebra for high-dimensional data.</p>
                     </a>
                 </div>
                 <div style="margin-top: 3rem;">
-                    <a href="/docs/" class="btn-outline">View All Algorithms -></a>
+                    <a href="/docs/" class="btn-outline">View All 30+ Algorithms &rarr;</a>
+                </div>
+            </section>
+
+            <!-- FAQ Section (visible, matches FAQ schema) -->
+            <section style="margin-top: 6rem;" aria-label="Frequently Asked Questions about VectorForgeML">
+                <h2 style="text-align: center;">Frequently Asked Questions</h2>
+                <div style="max-width: 800px; margin: 2rem auto;">
+                    <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">What is VectorForgeML?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">VectorForgeML is a high-performance machine learning framework for R powered by an optimized C++ backend. It provides 30+ algorithms including <a href="/docs/RandomForest.html" style="color: var(--accent-primary); text-decoration: none;">Random Forest</a>, <a href="/docs/PCA.html" style="color: var(--accent-primary); text-decoration: none;">PCA</a>, <a href="/docs/KMeans.html" style="color: var(--accent-primary); text-decoration: none;">K-Means</a>, <a href="/docs/LinearRegression.html" style="color: var(--accent-primary); text-decoration: none;">Linear Regression</a>, and full <a href="/docs/Pipeline.html" style="color: var(--accent-primary); text-decoration: none;">Pipeline</a> support, enabling you to train models in milliseconds.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">How do I install VectorForgeML?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Install VectorForgeML from GitHub: <code>remotes::install_github("mohd-musheer/VectorForgeML")</code>. You need R &ge; 4.0.0 and a C++ compiler. See the <a href="/install/" style="color: var(--accent-primary); text-decoration: none;">full installation guide</a> for details.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">What algorithms does VectorForgeML support?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">VectorForgeML supports 30+ algorithms across classification, regression, clustering, and dimensionality reduction. See the <a href="/docs/" style="color: var(--accent-primary); text-decoration: none;">full API reference</a> for the complete list.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Who created VectorForgeML?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">VectorForgeML was created by <a href="/developer/" style="color: var(--accent-primary); text-decoration: none;">Mohd Musheer</a>, a Full Stack Developer and ML Engineer. The project is open-source under the <a href="/license.html" style="color: var(--accent-primary); text-decoration: none;">MIT License</a>.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Why is VectorForgeML faster than other R ML libraries?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">VectorForgeML achieves superior performance through its optimized C++ backend that uses zero-copy data exchange with R, BLAS/LAPACK integration for linear algebra operations, and memory-efficient <code>std::vector</code> implementations.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Is VectorForgeML free to use?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Yes, VectorForgeML is completely free and open-source under the <a href="/license.html" style="color: var(--accent-primary); text-decoration: none;">MIT License</a>. Use it in personal and commercial projects. <a href="https://github.com/mohd-musheer/VectorForgeML" style="color: var(--accent-primary); text-decoration: none;" rel="noopener" target="_blank">View on GitHub</a>.</p>
+                    </div>
                 </div>
             </section>
 

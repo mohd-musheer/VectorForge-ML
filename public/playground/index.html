@@ -4,16 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VectorForgeML Playground</title>
+
+    <!-- Primary SEO Meta -->
+    <title>VectorForgeML Playground - Interactive AI Chat for ML Code Generation</title>
+    <meta name="description"
+        content="Try VectorForgeML's interactive AI playground. Generate R and C++ code snippets, explore ML algorithms, debug pipelines, and learn VectorForgeML interactively.">
+    <meta name="keywords"
+        content="VectorForgeML playground, VectorForgeML interactive, VectorForgeML AI chat, ML code generator, R code playground, VectorForgeML demo">
+    <meta name="author" content="Mohd Musheer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/playground/">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VectorForgeML">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/playground/">
+    <meta property="og:title" content="VectorForgeML Playground - Interactive AI Code Assistant">
+    <meta property="og:description"
+        content="Interactive AI playground for VectorForgeML. Generate code, explore algorithms, and debug ML pipelines.">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="VectorForgeML Playground">
+    <meta name="twitter:description"
+        content="Interactive AI playground for VectorForgeML code generation and ML exploration.">
+    <meta name="twitter:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap"
         rel="stylesheet">
+
+    <!-- JSON-LD: WebApplication Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "VectorForgeML Playground",
+      "description": "Interactive AI chat playground for VectorForgeML. Generate R and C++ code snippets, explore ML algorithms, and debug pipelines.",
+      "url": "https://vectorforgeml.work.gd/playground/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Mohd Musheer"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vectorforgeml.work.gd/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Playground",
+          "item": "https://vectorforgeml.work.gd/playground/"
+        }
+      ]
+    }
+    </script>
+
     <style>
         .playground-container {
             display: flex;
             height: calc(100vh - var(--nav-height) - 4rem);
-            /* Full height minus nav and padding */
             gap: 1.5rem;
         }
 
@@ -106,7 +177,6 @@
             align-self: flex-start;
             margin-bottom: 1rem;
             display: none;
-            /* Hidden by default */
         }
 
         .dot {
@@ -163,8 +233,6 @@
             outline: none;
             border-color: var(--accent-primary);
         }
-
-        /* INSERT API HERE */
     </style>
 </head>
 
@@ -212,22 +280,203 @@
     <!-- No footer for playground to maximize space -->
     <script type="module" src="/assets/js/main.js"></script>
     <script>
-        // Simple chat simulation
         document.addEventListener('DOMContentLoaded', () => {
             const sendBtn = document.getElementById('send-btn');
             const input = document.getElementById('user-input');
             const messages = document.getElementById('messages');
             const typing = document.getElementById('typing');
 
-            function addMessage(text, type) {
+            // VectorForgeML Knowledge Base
+            const kb = {
+                creator: "VectorForgeML was created by <strong>Mohd Musheer</strong>, a Full Stack Developer & ML Engineer specializing in R, C++, Machine Learning, System Architecture, and Performance Optimization. You can learn more at the <a href='/developer/' style='color:var(--accent-primary)'>Developer page</a> or find him on <a href='https://github.com/mohd-musheer' target='_blank' style='color:var(--accent-primary)'>GitHub</a>.",
+
+                what: "VectorForgeML is a <strong>high-performance machine learning framework for R</strong> powered by an optimized C++ backend. It provides 30+ algorithms across classification, regression, clustering, dimensionality reduction, and preprocessing — all designed for speed with zero-copy data exchange between R and C++. Licensed under MIT.",
+
+                algorithms: "VectorForgeML includes <strong>30+ algorithms</strong>:<br><br>" +
+                    "<strong>Models:</strong> RandomForest, DecisionTree, LinearRegression, LogisticRegression, SoftmaxRegression, RidgeRegression, KNN, KMeans, PCA<br><br>" +
+                    "<strong>Preprocessing:</strong> StandardScaler, MinMaxScaler, LabelEncoder, OneHotEncoder, ColumnTransformer, Pipeline, train_test_split, drop_constant_columns<br><br>" +
+                    "<strong>Metrics:</strong> accuracy_score, precision_score, recall_score, f1_score, macro_f1, macro_precision, macro_recall, confusion_matrix, confusion_stats, plot_confusion_matrix, mse, rmse, r2_score<br><br>" +
+                    "<strong>Core Engine:</strong> dot_product, square_vec, cpp_sum_squares, matrix_ops, cpp_set_blas_threads",
+
+                install: "To install VectorForgeML:<br><br><code>install.packages(\"remotes\")<br>remotes::install_github(\"mohd-musheer/VectorForgeML\")</code><br><br><strong>Requirements:</strong> R >= 4.0.0 and a C++ compiler (Rtools on Windows, Xcode CLI on macOS, build-essential on Linux).<br><br>See the full <a href='/install/' style='color:var(--accent-primary)'>Installation Guide</a>.",
+
+                pipeline: "<strong>Pipeline</strong> chains preprocessing steps and a model into a single workflow:<br><br><code>pipe &lt;- Pipeline(steps = list(<br>&nbsp;&nbsp;c(\"scaler\", StandardScaler()),<br>&nbsp;&nbsp;c(\"pca\", PCA(n_components = 2)),<br>&nbsp;&nbsp;c(\"model\", LogisticRegression())<br>))<br>pipe$fit(X_train, y_train)<br>preds &lt;- pipe$predict(X_test)</code><br><br>See <a href='/docs/Pipeline.html' style='color:var(--accent-primary)'>Pipeline docs</a>.",
+
+                randomforest: "<strong>Random Forest</strong> is an ensemble method that fits multiple decision trees on bootstrapped sub-samples and averages their predictions.<br><br><code>model &lt;- RandomForest(n_trees=100, max_depth=10)<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/RandomForest.html' style='color:var(--accent-primary)'>RandomForest docs</a>.",
+
+                linearregression: "<strong>Linear Regression</strong> finds the best-fit line using BLAS-accelerated linear algebra for high-dimensional data.<br><br><code>model &lt;- LinearRegression()<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/LinearRegression.html' style='color:var(--accent-primary)'>LinearRegression docs</a>.",
+
+                logisticregression: "<strong>Logistic Regression</strong> is a classification algorithm using the sigmoid function, optimized in C++.<br><br><code>model &lt;- LogisticRegression(lr=0.01, max_iter=1000)<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/LogisticRegression.html' style='color:var(--accent-primary)'>LogisticRegression docs</a>.",
+
+                kmeans: "<strong>K-Means</strong> is an unsupervised clustering algorithm with optimized centroid initialization in C++.<br><br><code>model &lt;- KMeans(k=3)<br>model$fit(X)<br>labels &lt;- model$predict(X)</code><br><br>See <a href='/docs/KMeans.html' style='color:var(--accent-primary)'>KMeans docs</a>.",
+
+                knn: "<strong>KNN (K-Nearest Neighbors)</strong> classifies data points based on the majority class of their k nearest neighbors.<br><br><code>model &lt;- KNN(k=5)<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/KNN.html' style='color:var(--accent-primary)'>KNN docs</a>.",
+
+                pca: "<strong>PCA (Principal Component Analysis)</strong> reduces dimensionality while preserving maximum variance.<br><br><code>model &lt;- PCA(n_components=2)<br>model$fit(X_train)<br>X_reduced &lt;- model$transform(X_train)</code><br><br>See <a href='/docs/PCA.html' style='color:var(--accent-primary)'>PCA docs</a>.",
+
+                decisiontree: "<strong>Decision Tree</strong> builds a tree-based model by recursively splitting on feature thresholds.<br><br><code>model &lt;- DecisionTree(max_depth=5)<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/DecisionTree.html' style='color:var(--accent-primary)'>DecisionTree docs</a>.",
+
+                ridgeregression: "<strong>Ridge Regression</strong> is Linear Regression with L2 regularization to prevent overfitting.<br><br><code>model &lt;- RidgeRegression(alpha=1.0)<br>model$fit(X_train, y_train)<br>preds &lt;- model$predict(X_test)</code><br><br>See <a href='/docs/RidgeRegression.html' style='color:var(--accent-primary)'>RidgeRegression docs</a>.",
+
+                softmaxregression: "<strong>Softmax Regression</strong> extends logistic regression to multi-class classification using the softmax function.<br><br>See <a href='/docs/SoftmaxRegression.html' style='color:var(--accent-primary)'>SoftmaxRegression docs</a>.",
+
+                standardscaler: "<strong>StandardScaler</strong> standardizes features by removing the mean and scaling to unit variance (z-score normalization).<br><br><code>scaler &lt;- StandardScaler()<br>scaler$fit(X_train)<br>X_scaled &lt;- scaler$transform(X_train)</code><br><br>See <a href='/docs/StandardScaler.html' style='color:var(--accent-primary)'>StandardScaler docs</a>.",
+
+                minmaxscaler: "<strong>MinMaxScaler</strong> scales features to a [0, 1] range.<br><br><code>scaler &lt;- MinMaxScaler()<br>scaler$fit(X_train)<br>X_scaled &lt;- scaler$transform(X_train)</code><br><br>See <a href='/docs/MinMaxScaler.html' style='color:var(--accent-primary)'>MinMaxScaler docs</a>.",
+
+                labelencoder: "<strong>LabelEncoder</strong> encodes categorical labels into integers (0, 1, 2, ...).<br><br>See <a href='/docs/LabelEncoder.html' style='color:var(--accent-primary)'>LabelEncoder docs</a>.",
+
+                onehotencoder: "<strong>OneHotEncoder</strong> converts categorical variables into binary one-hot vectors.<br><br>See <a href='/docs/OneHotEncoder.html' style='color:var(--accent-primary)'>OneHotEncoder docs</a>.",
+
+                columntransformer: "<strong>ColumnTransformer</strong> applies different preprocessing steps to different columns of your data.<br><br>See <a href='/docs/ColumnTransformer.html' style='color:var(--accent-primary)'>ColumnTransformer docs</a>.",
+
+                traintestsplit: "<strong>train_test_split</strong> splits data into training and test sets.<br><br><code>split &lt;- train_test_split(X, y, test_size=0.2)</code><br><br>See <a href='/docs/train_test_split.html' style='color:var(--accent-primary)'>train_test_split docs</a>.",
+
+                accuracy: "<strong>accuracy_score</strong> computes the fraction of correct predictions.<br><br><code>acc &lt;- accuracy_score(y_true, y_pred)</code><br><br>See <a href='/docs/accuracy_score.html' style='color:var(--accent-primary)'>accuracy_score docs</a>.",
+
+                precision: "<strong>precision_score</strong> computes precision = TP / (TP + FP).<br><br>See <a href='/docs/precision_score.html' style='color:var(--accent-primary)'>precision_score docs</a>.",
+
+                recall: "<strong>recall_score</strong> computes recall = TP / (TP + FN).<br><br>See <a href='/docs/recall_score.html' style='color:var(--accent-primary)'>recall_score docs</a>.",
+
+                f1: "<strong>f1_score</strong> computes the harmonic mean of precision and recall.<br><br>See <a href='/docs/f1_score.html' style='color:var(--accent-primary)'>f1_score docs</a>.",
+
+                confusion: "<strong>confusion_matrix</strong> generates a matrix of true vs predicted labels.<br><br>See <a href='/docs/confusion_matrix.html' style='color:var(--accent-primary)'>confusion_matrix docs</a> and <a href='/docs/plot_confusion_matrix.html' style='color:var(--accent-primary)'>plot_confusion_matrix</a>.",
+
+                mse: "<strong>MSE (Mean Squared Error)</strong> measures average squared difference between predictions and actual values.<br><br>See <a href='/docs/mse.html' style='color:var(--accent-primary)'>mse docs</a>.",
+
+                rmse: "<strong>RMSE (Root Mean Squared Error)</strong> is the square root of MSE, in the same units as the target.<br><br>See <a href='/docs/rmse.html' style='color:var(--accent-primary)'>rmse docs</a>.",
+
+                r2: "<strong>R² Score</strong> measures how well the model explains variance in the data (1.0 = perfect fit).<br><br>See <a href='/docs/r2_score.html' style='color:var(--accent-primary)'>r2_score docs</a>.",
+
+                license: "VectorForgeML is <strong>free and open-source</strong> under the <a href='/license.html' style='color:var(--accent-primary)'>MIT License</a>. You can use it for personal and commercial projects without restrictions.",
+
+                speed: "VectorForgeML achieves high performance through:<br>• Optimized <strong>C++ backend</strong> compiled via Rcpp<br>• <strong>Zero-copy data exchange</strong> between R and C++<br>• <strong>BLAS/LAPACK</strong> integration for linear algebra<br>• Memory-efficient <code>std::vector</code> implementations<br>• Configurable threading via <code>cpp_set_blas_threads()</code>",
+
+                help: "Here's what you can ask me about:<br><br>" +
+                    "• <strong>\"What is VectorForgeML?\"</strong> — Overview of the framework<br>" +
+                    "• <strong>\"Who created it?\"</strong> — About the creator<br>" +
+                    "• <strong>\"How to install?\"</strong> — Installation guide<br>" +
+                    "• <strong>\"List algorithms\"</strong> — All supported algorithms<br>" +
+                    "• <strong>\"Pipeline\"</strong> — How to build pipelines<br>" +
+                    "• Any algorithm name like <strong>\"Random Forest\"</strong>, <strong>\"KMeans\"</strong>, <strong>\"PCA\"</strong>, etc.<br>" +
+                    "• <strong>\"Accuracy\"</strong>, <strong>\"MSE\"</strong>, <strong>\"F1\"</strong> — Metric details<br>" +
+                    "• <strong>\"Why is it fast?\"</strong> — Performance details<br>" +
+                    "• <strong>\"License\"</strong> — Licensing info"
+            };
+
+            // Match user input to knowledge base
+            function getResponse(input) {
+                const q = input.toLowerCase().trim();
+
+                // Creator / Author
+                if (q.match(/who\s*(created|made|built|developed|wrote|is the (author|creator|developer|founder))|musheer|author|creator|founder/))
+                    return kb.creator;
+
+                // What is VectorForgeML
+                if (q.match(/what\s*is\s*vector|tell\s*me\s*about\s*vector|about\s*vectorforge|what\s*does\s*vectorforge|describe\s*vectorforge|overview/))
+                    return kb.what;
+
+                // Installation
+                if (q.match(/install|setup|how\s*to\s*(get|start|use)|getting\s*started|requirements|prerequisites/))
+                    return kb.install;
+
+                // List algorithms
+                if (q.match(/list\s*(all\s*)?algo|all\s*algo|what\s*algo|supported\s*algo|how\s*many\s*algo|available\s*algo|features|what\s*can/))
+                    return kb.algorithms;
+
+                // Pipeline
+                if (q.match(/pipeline/))
+                    return kb.pipeline;
+
+                // Specific algorithms (order matters — check multi-word first)
+                if (q.match(/random\s*forest/))
+                    return kb.randomforest;
+                if (q.match(/linear\s*regression/) && !q.match(/logistic|ridge|softmax/))
+                    return kb.linearregression;
+                if (q.match(/logistic\s*regression/))
+                    return kb.logisticregression;
+                if (q.match(/ridge\s*regression/))
+                    return kb.ridgeregression;
+                if (q.match(/softmax\s*regression/))
+                    return kb.softmaxregression;
+                if (q.match(/decision\s*tree/))
+                    return kb.decisiontree;
+                if (q.match(/k[\s-]*means|kmeans/))
+                    return kb.kmeans;
+                if (q.match(/\bknn\b|k[\s-]*nearest|nearest\s*neighbor/))
+                    return kb.knn;
+                if (q.match(/\bpca\b|principal\s*component/))
+                    return kb.pca;
+                if (q.match(/standard\s*scaler/))
+                    return kb.standardscaler;
+                if (q.match(/min\s*max\s*scaler|minmax/))
+                    return kb.minmaxscaler;
+                if (q.match(/label\s*encoder/))
+                    return kb.labelencoder;
+                if (q.match(/one\s*hot|onehot/))
+                    return kb.onehotencoder;
+                if (q.match(/column\s*transform/))
+                    return kb.columntransformer;
+                if (q.match(/train.*(test|split)|split.*data/))
+                    return kb.traintestsplit;
+
+                // Metrics
+                if (q.match(/confusion\s*matrix|confusion_matrix|plot.*confusion/))
+                    return kb.confusion;
+                if (q.match(/\baccuracy\b|accuracy_score/))
+                    return kb.accuracy;
+                if (q.match(/\bprecision\b|precision_score/) && !q.match(/macro/))
+                    return kb.precision;
+                if (q.match(/\brecall\b|recall_score/) && !q.match(/macro/))
+                    return kb.recall;
+                if (q.match(/\bf1\b|f1_score|f1\s*score/) && !q.match(/macro/))
+                    return kb.f1;
+                if (q.match(/\brmse\b/))
+                    return kb.rmse;
+                if (q.match(/\bmse\b/) && !q.match(/rmse/))
+                    return kb.mse;
+                if (q.match(/r2|r²|r\s*squared/))
+                    return kb.r2;
+                if (q.match(/macro/))
+                    return "VectorForgeML provides <strong>macro_f1</strong>, <strong>macro_precision</strong>, and <strong>macro_recall</strong> for multi-class evaluation. These compute the metric for each class independently and then average them.<br><br>See <a href='/docs/macro_f1.html' style='color:var(--accent-primary)'>macro_f1</a>, <a href='/docs/macro_precision.html' style='color:var(--accent-primary)'>macro_precision</a>, <a href='/docs/macro_recall.html' style='color:var(--accent-primary)'>macro_recall</a>.";
+
+                // Speed / Performance
+                if (q.match(/fast|speed|performance|why.*fast|benchmark|c\+\+|blas|zero[\s-]*copy/))
+                    return kb.speed;
+
+                // License
+                if (q.match(/license|free|open\s*source|cost|price|mit/))
+                    return kb.license;
+
+                // Help
+                if (q.match(/help|what\s*can\s*you|how\s*to\s*use|commands|options/))
+                    return kb.help;
+
+                // Greetings
+                if (q.match(/^(hi|hello|hey|greetings|good\s*(morning|evening|afternoon)|howdy|sup|yo)\b/))
+                    return "Hello! I'm the VectorForgeML assistant. Ask me about algorithms, installation, the creator, or anything about the framework. Type <strong>\"help\"</strong> to see what I can answer.";
+
+                // Thanks
+                if (q.match(/^(thanks|thank\s*you|thx|cheers|appreciate)/))
+                    return "You're welcome! Let me know if you have more questions about VectorForgeML.";
+
+                // Fallback
+                return "I don't have a specific answer for that yet, but you can explore the <a href='/docs/' style='color:var(--accent-primary)'>full documentation</a> or try asking about a specific algorithm, installation, or the creator. Type <strong>\"help\"</strong> to see what I can answer.";
+            }
+
+            function addMessage(content, type) {
                 const div = document.createElement('div');
                 div.className = `message-bubble ${type} slide-up`;
-                div.textContent = text;
+                if (type === 'bot') {
+                    div.innerHTML = content;
+                } else {
+                    div.textContent = content;
+                }
                 messages.appendChild(div);
                 messages.scrollTop = messages.scrollHeight;
             }
 
-            sendBtn.addEventListener('click', () => {
+            function handleSend() {
                 const text = input.value.trim();
                 if (!text) return;
 
@@ -237,11 +486,20 @@
                 typing.style.display = 'flex';
                 messages.scrollTop = messages.scrollHeight;
 
-                // Simulate response
+                const delay = 400 + Math.random() * 800;
                 setTimeout(() => {
                     typing.style.display = 'none';
-                    addMessage("This is a simulated response. Connect the API to get real answers.", 'bot');
-                }, 1500);
+                    const response = getResponse(text);
+                    addMessage(response, 'bot');
+                }, delay);
+            }
+
+            sendBtn.addEventListener('click', handleSend);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSend();
+                }
             });
         });
     </script>

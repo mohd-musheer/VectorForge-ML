@@ -1,3 +1,30 @@
+# VectorForgeML Robots.txt
+# https://vectorforgeml.work.gd/
+
 User-agent: *
 Allow: /
+Allow: /docs/
+Allow: /install/
+Allow: /developer/
+Allow: /community/
+Allow: /playground/
+
+# Prevent indexing of asset files
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://vectorforgeml.work.gd/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

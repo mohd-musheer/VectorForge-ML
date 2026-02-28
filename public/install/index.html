@@ -4,11 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Install VectorForgeML</title>
+
+    <!-- Primary SEO Meta -->
+    <title>Install VectorForgeML - Setup Guide for R & C++ ML Framework</title>
+    <meta name="description"
+        content="Step-by-step installation guide for VectorForgeML. Install the high-performance C++ machine learning framework for R from GitHub in minutes. Prerequisites: R >= 4.0.0 and a C++ compiler.">
+    <meta name="keywords"
+        content="install VectorForgeML, VectorForgeML setup, VectorForgeML installation guide, R ML framework install, VectorForgeML GitHub, remotes install_github VectorForgeML">
+    <meta name="author" content="Mohd Musheer">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://vectorforgeml.work.gd/install/">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="VectorForgeML">
+    <meta property="og:url" content="https://vectorforgeml.work.gd/install/">
+    <meta property="og:title" content="Install VectorForgeML - Quick Setup Guide">
+    <meta property="og:description"
+        content="Install VectorForgeML in minutes. Step-by-step guide for setting up the high-performance C++ ML framework for R.">
+    <meta property="og:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Install VectorForgeML - Setup Guide">
+    <meta name="twitter:description"
+        content="Step-by-step installation guide for VectorForgeML, the high-performance C++ machine learning framework for R.">
+    <meta name="twitter:image" content="https://vectorforgeml.work.gd/assets/images/VectorForgeML_Logo.png">
+
     <link rel="icon" type="image/png" href="/assets/images/VectorForgeML_Logo.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap"
         rel="stylesheet">
+
+    <!-- JSON-LD: HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Install VectorForgeML",
+      "description": "Step-by-step guide to install VectorForgeML, a high-performance C++ machine learning framework for R.",
+      "totalTime": "PT5M",
+      "tool": [
+        {"@type": "HowToTool", "name": "R (>= 4.0.0)"},
+        {"@type": "HowToTool", "name": "C++ Compiler (g++, clang++, or MSVC)"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Install Prerequisites",
+          "text": "Ensure you have R (>= 4.0.0) and a C++ compiler installed. On Windows, install RTools. On macOS, install Xcode Command Line Tools."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Install remotes package",
+          "text": "Run: install.packages('remotes', repos='https://cloud.r-project.org')"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Install VectorForgeML from GitHub",
+          "text": "Run: remotes::install_github('mohd-musheer/VectorForgeML')"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Verify Installation",
+          "text": "Run: library(VectorForgeML); ls('package:VectorForgeML') to confirm the package is loaded."
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Mohd Musheer"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vectorforgeml.work.gd/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Installation",
+          "item": "https://vectorforgeml.work.gd/install/"
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -16,35 +110,63 @@
 
     <div class="layout-container">
         <main class="main-content">
-            <h1 class="fade-in">Installation</h1>
+            <h1 class="fade-in">Install VectorForgeML</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">Get VectorForgeML up and running in your R environment. The framework is hosted on <a href="https://github.com/mohd-musheer/VectorForgeML" style="color: var(--accent-primary); text-decoration: none;" rel="noopener" target="_blank">GitHub</a> and installs in minutes.</p>
 
             <section class="glass-panel slide-up" style="padding: 2rem; margin-top: 2rem;">
-                <h3>Prerequisites</h3>
-                <p style="color: var(--text-secondary);">Ensure you have R (>= 4.0.0) and a C++ compiler installed.</p>
+                <h2 style="font-size: 1.3rem;">Step 1: Prerequisites</h2>
+                <p style="color: var(--text-secondary);">Ensure you have <strong>R (&ge; 4.0.0)</strong> and a <strong>C++ compiler</strong> installed on your system.</p>
+                <ul style="color: var(--text-secondary); margin-top: 0.5rem; padding-left: 1.5rem;">
+                    <li><strong>Windows:</strong> Install <a href="https://cran.r-project.org/bin/windows/Rtools/" style="color: var(--accent-primary); text-decoration: none;" rel="noopener" target="_blank">RTools</a></li>
+                    <li><strong>macOS:</strong> Install Xcode Command Line Tools (<code>xcode-select --install</code>)</li>
+                    <li><strong>Linux:</strong> Install <code>build-essential</code> and <code>r-base-dev</code></li>
+                </ul>
 
-                <h3 class="mt-4">From GitHub</h3>
-                <p style="color: var(--text-secondary);">VectorForgeML is hosted on GitHub. You can install the
-                    development version using `remotes`.</p>
+                <h2 style="font-size: 1.3rem; margin-top: 2rem;">Step 2: Install from GitHub</h2>
+                <p style="color: var(--text-secondary);">VectorForgeML is installed directly from GitHub using the <code>remotes</code> package.</p>
 
                 <div style="position: relative; margin-top: 1rem;">
                     <pre><code class="language-r">install.packages("remotes", repos="https://cloud.r-project.org")
 remotes::install_github("mohd-musheer/VectorForgeML")</code></pre>
                 </div>
 
-                <h3 class="mt-4">Verify Installation</h3>
+                <h2 style="font-size: 1.3rem; margin-top: 2rem;">Step 3: Verify Installation</h2>
                 <pre><code class="language-r">library(VectorForgeML)
 # Check available functions
 ls("package:VectorForgeML")</code></pre>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem;">You should see 30+ functions listed. Ready to go! Check out the <a href="/docs/" style="color: var(--accent-primary); text-decoration: none;">documentation</a> for quick start guides.</p>
             </section>
 
             <section class="mt-4 slide-up" style="animation-delay: 0.1s;">
                 <h2>Troubleshooting</h2>
                 <div class="glass-panel" style="padding: 2rem; margin-top: 1rem;">
-                    <h4>Compiler Errors?</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: 0;">
+                    <h3 style="font-size: 1.1rem;">Compiler Errors on Windows</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
                         If you encounter compilation errors on Windows, ensure RTools is installed and added to your
-                        PATH. On macOS, ensure Xcode Command Line Tools are installed.
+                        PATH. Verify with <code>Sys.which("make")</code> in R.
                     </p>
+                    <h3 style="font-size: 1.1rem;">macOS Compilation Issues</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 0;">
+                        On macOS, ensure Xcode Command Line Tools are installed: <code>xcode-select --install</code>. For M1/M2 Macs, ensure you have the ARM-compatible R version.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mt-4 slide-up" style="animation-delay: 0.2s; margin-top: 3rem;">
+                <h2>Next Steps</h2>
+                <div class="grid-3" style="margin-top: 1rem;">
+                    <a href="/docs/" class="glass-panel" style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h3 style="font-size: 1rem;">Documentation</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">API reference and quick start guides</p>
+                    </a>
+                    <a href="/docs/Pipeline.html" class="glass-panel" style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h3 style="font-size: 1rem;">Build a Pipeline</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Create end-to-end ML workflows</p>
+                    </a>
+                    <a href="/docs/RandomForest.html" class="glass-panel" style="padding: 1.5rem; text-decoration: none; color: inherit; display: block;">
+                        <h3 style="font-size: 1rem;">Random Forest</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Try ensemble learning first</p>
+                    </a>
                 </div>
             </section>
         </main>
