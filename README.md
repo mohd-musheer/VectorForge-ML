@@ -5,7 +5,7 @@
 [![CRAN Downloads](https://cranlogs.r-pkg.org/badges/VectorForgeML)](https://cran.r-project.org/package=VectorForgeML)
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE)
 [![R-CMD-check](https://github.com/mohd-musheer/VectorForgeML/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mohd-musheer/VectorForgeML/actions)
-[![CRAN checks](https://cranchecks.info/badges/summary/VectorForgeML)](https://cran.r-project.org/web/checks/check_results_VectorForgeML.html)
+[![CRAN checks](https://cranchecks.info/badges/worst/VectorForgeML.svg)](https://cran.r-project.org/web/checks/check_results_VectorForgeML.html)
 
 <p align="center">
   <img src="public/assets/images/VectorForgeML_Logo.png" alt="VectorForgeML Logo" width="200"/>
@@ -95,30 +95,34 @@ We have implemented a wide range of algorithms, verified with real-world dataset
 Here is how you can build a powerful pipeline in just a few lines of R:
 
 ```r
+
+install.packages("VectorForgeML")
 library(VectorForgeML)
 
-# 1. Load Data
-data(iris)
-X <- as.matrix(iris[, 1:4])
-y <- as.numeric(iris[, 5]) - 1 # Convert to 0,1,2
+df <- read.csv(system.file("dataset","winequality.csv", package="VectorForgeML"),sep=";")
+y <- df$quality
+X <- df; X$quality<-NULL
 
-# 2. Split Data
-split <- train_test_split(X, y, test_size = 0.2)
+split <- train_test_split(X,y,0.2,42)
 
-# 3. Create a Pipeline
-pipe <- Pipeline(steps = list(
-   c("scaler", StandardScaler()),
-   c("pca", PCA(n_components = 2)),
-   c("model", SoftmaxRegression(epochs=1000, lr=0.1))
+cat_cols <- names(X)[sapply(X,is.character)]
+num_cols <- names(X)[!sapply(X,is.character)]
+
+pre <- ColumnTransformer$new(
+  num_cols,cat_cols,
+  StandardScaler$new(),
+  OneHotEncoder$new()
+)
+
+pipe <- Pipeline$new(list(
+  pre,
+  RandomForest$new(ntrees=100,max_depth=7,4,mode="classification")
 ))
 
-# 4. Train
-pipe$fit(split$X_train, split$y_train)
+pipe$fit(split$X_train,split$y_train)
+pred <- pipe$predict(split$X_test)
 
-# 5. Predict & Evaluate
-preds <- pipe$predict(split$X_test)
-acc <- accuracy_score(split$y_test, preds)
-print(paste("Accuracy:", acc))
+cat("Accuracy:",accuracy_score(split$y_test,round(pred)),"\n")
 ```
 
 ---
@@ -157,7 +161,6 @@ If you use VectorForgeML in research, please cite:
 Musheer, M. (2026). VectorForgeML: High-Performance Machine Learning Framework. CRAN.  
 DOI: 10.32614/CRAN.package.VectorForgeML
 
-```markdown
 ## 📜 License
 
 This project is licensed under the **Apache License 2.0**.
