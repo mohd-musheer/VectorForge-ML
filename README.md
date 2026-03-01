@@ -2,10 +2,9 @@
 ### High-Performance Machine Learning Framework for R & C++
 
 [![CRAN Version](https://www.r-pkg.org/badges/version/VectorForgeML)](https://cran.r-project.org/package=VectorForgeML)
-[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/VectorForgeML)](https://cran.r-project.org/package=VectorForgeML)
+
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE)
-[![R-CMD-check](https://github.com/mohd-musheer/VectorForgeML/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mohd-musheer/VectorForgeML/actions)
-[![CRAN checks](https://cranchecks.info/badges/worst/VectorForgeML.svg)](https://cran.r-project.org/web/checks/check_results_VectorForgeML.html)
+
 
 <p align="center">
   <img src="public/assets/images/VectorForgeML_Logo.png" alt="VectorForgeML Logo" width="200"/>
